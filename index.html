@@ -10,17 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cyan: #00D4FF;
-            --purple: #9B4DFF;
-            --deep-purple: #6B21A8;
-            --dark: #0A0A0F;
-            --darker: #050508;
-            --gray-100: #F4F4F5;
-            --gray-400: #A1A1AA;
-            --gray-600: #52525B;
-            --gray-800: #27272A;
-            --gradient: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
-            --gradient-soft: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(155, 77, 255, 0.15) 100%);
+            --green: #00FF88;
+            --blue: #00AAFF;
+            --deep-blue: #0066CC;
+            --dark: #0A0F0A;
+            --darker: #050808;
+            --gray-100: #F4F5F4;
+            --gray-400: #A1AAA1;
+            --gray-600: #525B52;
+            --gray-800: #272A27;
+            --gradient: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+            --gradient-soft: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 170, 255, 0.15) 100%);
         }
 
         * {
@@ -49,8 +49,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(155, 77, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(155, 77, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 170, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 170, 255, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
@@ -70,13 +70,13 @@
         .bg-glow-1 {
             top: -400px;
             right: -200px;
-            background: var(--purple);
+            background: var(--blue);
         }
 
         .bg-glow-2 {
             bottom: -400px;
             left: -200px;
-            background: var(--cyan);
+            background: var(--green);
             opacity: 0.25;
         }
 
@@ -90,7 +90,7 @@
             padding: 1.25rem 2rem;
             background: rgba(5, 5, 8, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(155, 77, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
         }
 
         .nav-inner {
@@ -150,7 +150,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(155, 77, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 170, 255, 0.4);
         }
 
         .btn-secondary {
@@ -176,8 +176,46 @@
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 1700px;
+            width: 100%;
+        }
+
+        /* Hero Top: iPhone - Text - Mac */
+        .hero-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-device {
+            flex: 0 0 auto;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-device:hover {
+            transform: translateY(-10px);
+        }
+
+        .hero-device img {
+            width: 180px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+        }
+
+        .hero-device.iphone img {
+            width: 400px;
+        }
+
+        .hero-device.mac img {
+            width: 700px;
+        }
+
+        .hero-center {
+            flex: 1;
             text-align: center;
+            max-width: 550px;
         }
 
         .badge {
@@ -186,18 +224,18 @@
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             background: var(--gradient-soft);
-            border: 1px solid rgba(155, 77, 255, 0.2);
+            border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 100px;
             font-size: 0.85rem;
             font-weight: 500;
-            color: var(--cyan);
-            margin-bottom: 2rem;
+            color: var(--green);
+            margin-bottom: 1.5rem;
         }
 
         .badge-dot {
             width: 6px;
             height: 6px;
-            background: var(--cyan);
+            background: var(--green);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -208,11 +246,11 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         h1 span {
@@ -223,10 +261,9 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--gray-400);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
             line-height: 1.7;
         }
 
@@ -237,21 +274,140 @@
             flex-wrap: wrap;
         }
 
+        /* Responsive hero for mobile */
+        @media (max-width: 900px) {
+            .hero-top {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-device {
+                order: 2;
+            }
+
+            .hero-device.iphone {
+                order: 1;
+            }
+
+            .hero-device.mac {
+                order: 3;
+            }
+
+            .hero-center {
+                order: 2;
+                max-width: 100%;
+            }
+
+            .hero-device img,
+            .hero-device.iphone img,
+            .hero-device.mac img {
+                width: 450px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
         .hero-image {
             margin-top: 4rem;
             position: relative;
         }
 
-        .devices-mockup {
+        /* Screenshot Carousel */
+        .screenshot-carousel {
+            position: relative;
             max-width: 100%;
-            width: 800px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 
-                0 0 0 1px rgba(155, 77, 255, 0.1),
-                0 50px 100px -20px rgba(0, 0, 0, 0.7),
-                0 0 100px rgba(155, 77, 255, 0.15);
+            margin: 0 auto;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
+
+        .screenshot-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll-carousel 25s linear infinite;
+            width: max-content;
+        }
+
+        .screenshot-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-carousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .devices-mockup {
+            width: 500px;
+            height: auto;
+            border-radius: 16px;
+            border: none;
+            outline: none;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+            object-fit: contain;
+        }
+
+        .devices-mockup:hover {
+            transform: scale(1.03);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger delays for grid items */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
 
         /* Stats Bar */
         .stats-bar {
@@ -259,8 +415,8 @@
             z-index: 1;
             padding: 3rem 2rem;
             background: rgba(10, 10, 15, 0.8);
-            border-top: 1px solid rgba(155, 77, 255, 0.1);
-            border-bottom: 1px solid rgba(155, 77, 255, 0.1);
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
         }
 
         .stats-grid {
@@ -322,14 +478,14 @@
 
         .feature-card {
             background: linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(15, 15, 22, 0.8) 100%);
-            border: 1px solid rgba(155, 77, 255, 0.1);
+            border: 1px solid rgba(0, 170, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
             transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            border-color: rgba(155, 77, 255, 0.3);
+            border-color: rgba(0, 170, 255, 0.3);
             transform: translateY(-4px);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
         }
@@ -363,7 +519,7 @@
             position: relative;
             z-index: 1;
             padding: 8rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(155, 77, 255, 0.03) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 170, 255, 0.03) 50%, transparent 100%);
         }
 
         .use-cases-grid {
@@ -380,14 +536,14 @@
             gap: 1rem;
             padding: 1.5rem;
             background: rgba(20, 20, 30, 0.5);
-            border: 1px solid rgba(155, 77, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.08);
             border-radius: 16px;
             transition: all 0.3s ease;
         }
 
         .use-case:hover {
             background: rgba(30, 30, 45, 0.5);
-            border-color: rgba(155, 77, 255, 0.15);
+            border-color: rgba(0, 170, 255, 0.15);
         }
 
         .use-case-icon {
@@ -430,7 +586,7 @@
             gap: 1rem;
             padding: 1rem 1.25rem;
             background: rgba(20, 20, 30, 0.5);
-            border: 1px solid rgba(155, 77, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.08);
             border-radius: 12px;
         }
 
@@ -443,7 +599,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            color: var(--cyan);
+            color: var(--green);
             font-size: 0.75rem;
         }
 
@@ -464,7 +620,7 @@
             max-width: 420px;
             margin: 0 auto;
             background: linear-gradient(135deg, rgba(25, 25, 40, 0.9) 0%, rgba(15, 15, 25, 0.9) 100%);
-            border: 1px solid rgba(155, 77, 255, 0.2);
+            border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 24px;
             padding: 3rem;
             position: relative;
@@ -521,7 +677,7 @@
         }
 
         .pricing-features li svg {
-            color: var(--cyan);
+            color: var(--green);
             flex-shrink: 0;
         }
 
@@ -536,7 +692,7 @@
             position: relative;
             z-index: 1;
             padding: 8rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.03) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.03) 50%, transparent 100%);
         }
 
         .download-container {
@@ -559,7 +715,7 @@
             gap: 1rem;
             padding: 1rem 2rem;
             background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(155, 77, 255, 0.2);
+            border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 16px;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -567,7 +723,7 @@
 
         .download-btn:hover {
             background: rgba(30, 30, 45, 0.8);
-            border-color: rgba(155, 77, 255, 0.4);
+            border-color: rgba(0, 170, 255, 0.4);
             transform: translateY(-2px);
         }
 
@@ -596,7 +752,7 @@
             position: relative;
             z-index: 1;
             padding: 4rem 2rem;
-            border-top: 1px solid rgba(155, 77, 255, 0.1);
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
             text-align: center;
         }
 
@@ -612,7 +768,7 @@
         }
 
         footer a:hover {
-            color: var(--cyan);
+            color: var(--green);
         }
 
         /* Responsive */
@@ -682,26 +838,54 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="badge">
-                <span class="badge-dot"></span>
-                Now available on the App Store
+            <!-- Hero Top: iPhone - Text - Mac -->
+            <div class="hero-top">
+                <!-- iPhone on left -->
+                <div class="hero-device iphone">
+                    <img src="screenshots/iphone.png" alt="iPhone">
+                </div>
+                
+                <!-- Center text -->
+                <div class="hero-center">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        Now available on the App Store
+                    </div>
+                    <h1>Turn Your iPhone Into a <span>Second Display</span></h1>
+                    <p class="hero-subtitle">Transform any iPhone into a wireless or USB-connected external monitor for your Mac. No expensive hardware needed — just your phone.</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            Download for iOS
+                        </a>
+                        <a href="#download" class="btn btn-secondary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13v6l5.25 3.15.75-1.23-4.5-2.67V7h-1.5z"/></svg>
+                            Download for Mac
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mac on right -->
+                <div class="hero-device mac">
+                    <img src="screenshots/mac.png" alt="Mac">
+                </div>
             </div>
-            <h1>Turn Your iPhone Into a <span>Second Display</span></h1>
-            <p class="hero-subtitle">Transform any iPhone into a wireless or USB-connected external monitor for your Mac. No expensive hardware needed — just your phone.</p>
-            <div class="hero-buttons">
-                <a href="#download" class="btn btn-primary">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    Download for iOS
-                </a>
-                <a href="#download" class="btn btn-secondary">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13v6l5.25 3.15.75-1.23-4.5-2.67V7h-1.5z"/></svg>
-                    Download for Mac
-                </a>
-            </div>
+            
+            <!-- Screenshot Carousel below -->
             <div class="hero-image">
-                <!-- Placeholder for app screenshot/mockup -->
-                <div style="width: 100%; max-width: 800px; height: 450px; margin: 0 auto; background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(155, 77, 255, 0.1) 100%); border-radius: 20px; border: 1px solid rgba(155, 77, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--gray-400);">
-                    <span style="font-size: 1rem;">App Screenshot / Demo Video</span>
+                <div class="screenshot-carousel">
+                    <div class="screenshot-track">
+                        <!-- First set of screenshots -->
+                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 1" class="devices-mockup">
+                        <img src="screenshots/screenshot2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
+                        <img src="screenshots/screenshot3.png" alt="LilDisplay screenshot 3" class="devices-mockup">
+                        <img src="screenshots/screenshot4.png" alt="LilDisplay screenshot 4" class="devices-mockup">
+                        <!-- Duplicate set for seamless loop -->
+                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 1" class="devices-mockup">
+                        <img src="screenshots/screenshot2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
+                        <img src="screenshots/screenshot3.png" alt="LilDisplay screenshot 3" class="devices-mockup">
+                        <img src="screenshots/screenshot4.png" alt="LilDisplay screenshot 4" class="devices-mockup">
+                    </div>
                 </div>
             </div>
         </div>
@@ -714,12 +898,12 @@
                 <p>Latency</p>
             </div>
             <div class="stat-item">
-                <h3>120Hz</h3>
-                <p>ProMotion Support</p>
-            </div>
-            <div class="stat-item">
                 <h3>USB + WiFi</h3>
                 <p>Dual Connectivity</p>
+            </div>
+            <div class="stat-item">
+                <h3>2 Modes</h3>
+                <p>Display & Remote</p>
             </div>
             <div class="stat-item">
                 <h3>iOS 15+</h3>
@@ -729,37 +913,37 @@
     </section>
 
     <section class="features" id="features">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Everything You Need</h2>
             <p>A powerful, pocket-sized second display with all the features you'd expect from a dedicated monitor.</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-1">
                 <div class="feature-icon">⚡</div>
                 <h3>Ultra-Low Latency</h3>
                 <p>MJPEG encoding delivers 5-10ms latency — faster than most wireless displays. Your cursor moves in real-time.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-2">
                 <div class="feature-icon">🔌</div>
                 <h3>USB or WiFi Connection</h3>
                 <p>Connect via USB for maximum reliability and speed, or go wireless with WiFi P2P — no router needed.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-3">
                 <div class="feature-icon">👆</div>
                 <h3>Touch & Trackpad Input</h3>
                 <p>Use your iPhone as a touchscreen! Tap, scroll, and interact with your Mac directly from the display.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-4">
                 <div class="feature-icon">🖥️</div>
                 <h3>True External Display</h3>
                 <p>Works as a real second monitor — extend your desktop, move windows, run fullscreen apps.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-5">
                 <div class="feature-icon">🎨</div>
                 <h3>Metal-Accelerated Rendering</h3>
                 <p>GPU-powered display rendering for smooth visuals and efficient battery usage on your iPhone.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card fade-in stagger-6">
                 <div class="feature-icon">📱</div>
                 <h3>Works With Any iPhone</h3>
                 <p>Compatible with iPhone 6s and later running iOS 15+. Use that old phone in your drawer!</p>
@@ -768,7 +952,7 @@
     </section>
 
     <section class="use-cases" id="use-cases">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Perfect For</h2>
             <p>Whether you're studying, coding, or just need more space — LilDisplay has you covered.</p>
         </div>
@@ -840,7 +1024,7 @@
     </section>
 
     <section class="specs" id="specs">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Technical Specs</h2>
             <p>Built for performance and reliability.</p>
         </div>
@@ -861,10 +1045,6 @@
                 <div class="spec-item">
                     <span class="spec-check">✓</span>
                     <span>WiFi P2P via Bonjour/AWDL</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>120Hz ProMotion support</span>
                 </div>
                 <div class="spec-item">
                     <span class="spec-check">✓</span>
@@ -891,12 +1071,12 @@
     </section>
 
     <section class="pricing" id="pricing">
-        <div class="section-header">
+        <div class="section-header fade-in">
             <h2>Simple, One-Time Pricing</h2>
             <p>No subscriptions. Pay once, use forever.</p>
         </div>
-        <div class="pricing-card">
-            <div class="price-tag"><sup>$</sup>4<sup>.99</sup></div>
+        <div class="pricing-card scale-in">
+            <div class="price-tag"><sup>$</sup>3<sup>.99</sup></div>
             <p class="price-period">One-time purchase</p>
             <ul class="pricing-features">
                 <li>
@@ -949,7 +1129,45 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Support</a></p>
+        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:support@lildisplay.app">Support</a></p>
     </footer>
+
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth parallax for background glows
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const glow1 = document.querySelector('.bg-glow-1');
+                    const glow2 = document.querySelector('.bg-glow-2');
+                    if (glow1) glow1.style.transform = `translateY(${scrollY * 0.1}px)`;
+                    if (glow2) glow2.style.transform = `translateY(${scrollY * -0.05}px)`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
 </body>
 </html>
