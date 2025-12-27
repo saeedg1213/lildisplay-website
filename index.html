@@ -163,17 +163,6 @@
             box-shadow: 0 10px 40px rgba(0, 102, 204, 0.4);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--gray-100);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
         /* Hero Section */
         .hero {
             position: relative;
@@ -190,7 +179,6 @@
             width: 100%;
         }
 
-        /* Hero Top: iPhone - Text - Mac */
         .hero-top {
             display: flex;
             align-items: center;
@@ -279,12 +267,30 @@
 
         .hero-buttons {
             display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-buttons-row {
+            display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Responsive hero for mobile */
+        .system-req {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .download-btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         @media (max-width: 900px) {
             .hero-top {
                 flex-direction: column;
@@ -311,7 +317,7 @@
             .hero-device img,
             .hero-device.iphone img,
             .hero-device.mac img {
-                width: 450px;
+                width: 350px;
             }
 
             h1 {
@@ -351,12 +357,11 @@
         }
 
         .devices-mockup {
-            width: 500px;
+            width: 700px;
             height: auto;
             border-radius: 16px;
             border: none;
             outline: none;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
             flex-shrink: 0;
             transition: transform 0.4s ease;
             object-fit: contain;
@@ -378,28 +383,6 @@
             transform: translateY(0);
         }
 
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
         .scale-in {
             opacity: 0;
             transform: scale(0.9);
@@ -411,13 +394,10 @@
             transform: scale(1);
         }
 
-        /* Stagger delays for grid items */
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
         .stagger-3 { transition-delay: 0.3s; }
         .stagger-4 { transition-delay: 0.4s; }
-        .stagger-5 { transition-delay: 0.5s; }
-        .stagger-6 { transition-delay: 0.6s; }
 
         /* Stats Bar */
         .stats-bar {
@@ -439,7 +419,7 @@
         }
 
         .stat-item h3 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -453,24 +433,29 @@
             font-size: 0.9rem;
         }
 
-        /* Features Section */
-        .features {
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Sections */
+        section {
             position: relative;
             z-index: 1;
-            padding: 8rem 2rem;
+            padding: 5rem 2rem;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
         }
 
         .section-header h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
         }
 
         .section-header p {
@@ -478,173 +463,144 @@
             font-size: 1.1rem;
         }
 
+        /* Features Section (Merged with Use Cases) */
         .features-grid {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .feature-card {
-            background: linear-gradient(135deg, rgba(20, 20, 30, 0.8) 0%, rgba(15, 15, 22, 0.8) 100%);
-            border: 1px solid rgba(0, 170, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
             transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            border-color: rgba(0, 170, 255, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 170, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background: var(--gradient-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--gray-400);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Use Cases Section */
-        .use-cases {
-            position: relative;
-            z-index: 1;
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 170, 255, 0.03) 50%, transparent 100%);
-        }
-
-        .use-cases-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .use-case {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(20, 20, 30, 0.5);
-            border: 1px solid rgba(0, 170, 255, 0.08);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .use-case:hover {
-            background: rgba(30, 30, 45, 0.5);
-            border-color: rgba(0, 170, 255, 0.15);
-        }
-
-        .use-case-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
         }
 
-        .use-case h4 {
-            font-size: 1rem;
+        .feature-card h3 {
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
         }
 
-        .use-case p {
+        .feature-card p {
             color: var(--gray-400);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        /* Tech Specs */
-        .specs {
-            position: relative;
-            z-index: 1;
-            padding: 8rem 2rem;
+        /* Setup Section */
+        .setup {
+            background: rgba(10, 10, 15, 0.6);
         }
 
-        .specs-container {
-            max-width: 900px;
+        .setup-steps {
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .spec-item {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.25rem;
-            background: rgba(20, 20, 30, 0.5);
-            border: 1px solid rgba(0, 170, 255, 0.08);
-            border-radius: 12px;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .spec-check {
-            width: 24px;
-            height: 24px;
+        .setup-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
             border-radius: 50%;
-            background: var(--gradient-soft);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700;
+            color: var(--dark);
             flex-shrink: 0;
-            color: var(--green);
-            font-size: 0.75rem;
         }
 
-        .spec-item span {
+        .step-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--gray-400);
             font-size: 0.95rem;
-            color: var(--gray-100);
+            line-height: 1.6;
         }
 
-        /* Pricing Section */
+        .step-content code {
+            background: rgba(0, 170, 255, 0.1);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--blue);
+        }
+
+        .permission-list {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-400);
+        }
+
+        .permission-item::before {
+            content: "→";
+            color: var(--green);
+        }
+
+        /* Pricing */
         .pricing {
-            position: relative;
-            z-index: 1;
-            padding: 8rem 2rem;
             text-align: center;
         }
 
         .pricing-card {
-            max-width: 420px;
+            max-width: 400px;
             margin: 0 auto;
-            background: linear-gradient(135deg, rgba(25, 25, 40, 0.9) 0%, rgba(15, 15, 25, 0.9) 100%);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 24px;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
+            padding: 2.5rem;
         }
 
         .price-tag {
@@ -654,21 +610,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
         }
 
         .price-tag sup {
             font-size: 1.5rem;
-            font-weight: 600;
+            vertical-align: super;
         }
 
         .price-period {
             color: var(--gray-400);
-            font-size: 1rem;
             margin-bottom: 2rem;
         }
 
         .pricing-features {
+            list-style: none;
             text-align: left;
             margin-bottom: 2rem;
         }
@@ -682,91 +637,24 @@
             color: var(--gray-100);
         }
 
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
         .pricing-features li svg {
             color: var(--green);
             flex-shrink: 0;
         }
 
         .trial-note {
-            color: var(--gray-400);
-            font-size: 0.875rem;
             margin-top: 1rem;
-        }
-
-        /* Download Section */
-        .download {
-            position: relative;
-            z-index: 1;
-            padding: 8rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.03) 50%, transparent 100%);
-        }
-
-        .download-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .download-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(0, 170, 255, 0.2);
-            border-radius: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            background: rgba(30, 30, 45, 0.8);
-            border-color: rgba(0, 170, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .download-btn-icon {
-            font-size: 2.5rem;
-        }
-
-        .download-btn-text {
-            text-align: left;
-        }
-
-        .download-btn-text span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--gray-400);
-        }
-
-        .download-btn-text strong {
-            display: block;
-            font-size: 1.1rem;
-            color: var(--gray-100);
+            font-size: 0.9rem;
+            color: var(--green);
         }
 
         /* Footer */
         footer {
             position: relative;
             z-index: 1;
-            padding: 4rem 2rem;
-            border-top: 1px solid rgba(0, 170, 255, 0.1);
             text-align: center;
-        }
-
-        footer p {
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--gray-600);
             font-size: 0.9rem;
         }
@@ -774,35 +662,10 @@
         footer a {
             color: var(--gray-400);
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         footer a:hover {
-            color: var(--green);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .specs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            color: var(--gray-100);
         }
 
         /* Animations */
@@ -824,8 +687,7 @@
         .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
         .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
         .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
-        .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
-        .hero-image { animation: fadeInUp 0.8s ease 0.5s forwards; opacity: 0; }
+        .hero-image { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
     </style>
 </head>
 <body>
@@ -838,62 +700,58 @@
             <div class="logo">LilDisplay</div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#setup">How to Setup</a></li>
                 <li><a href="#pricing">Pricing</a></li>
             </ul>
-            <a href="#download" class="btn btn-primary">Get Started</a>
+            <a href="LilDisplay-Mac.dmg" class="btn btn-primary" download>Get Started</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <!-- Hero Top: iPhone - Text - Mac -->
             <div class="hero-top">
-                <!-- iPhone on left -->
                 <div class="hero-device iphone">
                     <img src="screenshots/iphone.png" alt="iPhone">
                 </div>
                 
-                <!-- Center text -->
                 <div class="hero-center">
-                    <div class="badge">
-                        <span class="badge-dot"></span>
-                        Now available on the App Store
-                    </div>
                     <h1>Turn Your iPhone Into a <span>Second Display</span></h1>
-                    <p class="hero-subtitle">Transform any iPhone into a wireless or USB-connected external monitor for your Mac. No expensive hardware needed — just your phone.</p>
+                    <p class="hero-subtitle">Transform any iPhone into a wireless or USB-connected external monitor for your Mac. No expensive hardware needed.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            Download for iOS
-                        </a>
-                        <a href="LilDisplay-Mac.dmg" class="btn btn-mac" download>
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            Download for Mac
-                        </a>
+                        <div class="hero-buttons-row">
+                            <div class="download-btn-wrapper">
+                                <a href="javascript:void(0)" class="btn btn-primary">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                    Download for iOS
+                                </a>
+                                <span class="system-req">Requires iOS 15 or later</span>
+                            </div>
+                            <div class="download-btn-wrapper">
+                                <a href="LilDisplay-Mac.dmg" class="btn btn-mac" download>
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                    Download for Mac
+                                </a>
+                                <span class="system-req">Requires macOS 14 Sonoma or later</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Mac on right -->
                 <div class="hero-device mac">
                     <img src="screenshots/mac.png" alt="Mac">
                 </div>
             </div>
             
-            <!-- Screenshot Carousel below -->
             <div class="hero-image">
                 <div class="screenshot-carousel">
                     <div class="screenshot-track">
-                        <!-- First set of screenshots -->
-                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 1" class="devices-mockup">
+                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 2" class="devices-mockup">
                         <img src="screenshots/screenshot2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
                         <img src="screenshots/screenshot3.png" alt="LilDisplay screenshot 3" class="devices-mockup">
                         <img src="screenshots/screenshot4.png" alt="LilDisplay screenshot 4" class="devices-mockup">
-                        <!-- Duplicate set for seamless loop -->
-                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 1" class="devices-mockup">
+                        <img src="screenshots/screenshot1.png" alt="LilDisplay screenshot 2" class="devices-mockup">
                         <img src="screenshots/screenshot2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/screenshot3.png" alt="LilDisplay screenshot 3" class="devices-mockup">
-                        <img src="screenshots/screenshot4.png" alt="LilDisplay screenshot 4" class="devices-mockup">
+
                     </div>
                 </div>
             </div>
@@ -908,172 +766,93 @@
             </div>
             <div class="stat-item">
                 <h3>USB + WiFi</h3>
-                <p>Dual Connectivity</p>
+                <p>Connectivity</p>
             </div>
             <div class="stat-item">
-                <h3>2 Modes</h3>
-                <p>Display & Remote</p>
+                <h3>Touch</h3>
+                <p>Input Support</p>
             </div>
             <div class="stat-item">
-                <h3>iOS 15+</h3>
-                <p>Compatibility</p>
+                <h3>$3.99</h3>
+                <p>One-time</p>
             </div>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="section-header fade-in">
-            <h2>Everything You Need</h2>
-            <p>A powerful, pocket-sized second display with all the features you'd expect from a dedicated monitor.</p>
+            <h2>Features</h2>
+            <p>Everything you need in a portable second display.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card fade-in stagger-1">
                 <div class="feature-icon">⚡</div>
-                <h3>Ultra-Low Latency</h3>
-                <p>MJPEG encoding delivers 5-10ms latency — faster than most wireless displays. Your cursor moves in real-time.</p>
+                <div>
+                    <h3>Ultra-Low Latency</h3>
+                    <p>Under 10ms latency with USB connection. Feels instant and responsive.</p>
+                </div>
             </div>
             <div class="feature-card fade-in stagger-2">
                 <div class="feature-icon">🔌</div>
-                <h3>USB or WiFi Connection</h3>
-                <p>Connect via USB for maximum reliability and speed, or go wireless with WiFi P2P — no router needed.</p>
+                <div>
+                    <h3>USB or WiFi</h3>
+                    <p>Connect via USB for best performance, or go wireless with WiFi P2P.</p>
+                </div>
             </div>
             <div class="feature-card fade-in stagger-3">
                 <div class="feature-icon">👆</div>
-                <h3>Touch & Trackpad Input</h3>
-                <p>Use your iPhone as a touchscreen! Tap, scroll, and interact with your Mac directly from the display.</p>
+                <div>
+                    <h3>Touch & Trackpad</h3>
+                    <p>Use your iPhone as a touchscreen or trackpad to control your Mac.</p>
+                </div>
             </div>
             <div class="feature-card fade-in stagger-4">
                 <div class="feature-icon">🖥️</div>
-                <h3>True External Display</h3>
-                <p>Works as a real second monitor — extend your desktop, move windows, run fullscreen apps.</p>
-            </div>
-            <div class="feature-card fade-in stagger-5">
-                <div class="feature-icon">🎨</div>
-                <h3>Metal-Accelerated Rendering</h3>
-                <p>GPU-powered display rendering for smooth visuals and efficient battery usage on your iPhone.</p>
-            </div>
-            <div class="feature-card fade-in stagger-6">
-                <div class="feature-icon">📱</div>
-                <h3>Works With Any iPhone</h3>
-                <p>Compatible with iPhone 6s and later running iOS 15+. Use that old phone in your drawer!</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="use-cases" id="use-cases">
-        <div class="section-header fade-in">
-            <h2>Perfect For</h2>
-            <p>Whether you're studying, coding, or just need more space — LilDisplay has you covered.</p>
-        </div>
-        <div class="use-cases-grid">
-            <div class="use-case">
-                <span class="use-case-icon">📚</span>
                 <div>
-                    <h4>Students</h4>
-                    <p>Reference notes while writing papers on your MacBook Air</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">💻</span>
-                <div>
-                    <h4>Developers</h4>
-                    <p>Keep docs, terminal, or preview on a side display</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">✈️</span>
-                <div>
-                    <h4>Travelers</h4>
-                    <p>Portable dual-screen setup that fits in your pocket</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">☕</span>
-                <div>
-                    <h4>Coffee Shop Workers</h4>
-                    <p>Extra screen space without carrying a portable monitor</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">🎨</span>
-                <div>
-                    <h4>Designers</h4>
-                    <p>Preview designs, color palettes, or chat on a second screen</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">📊</span>
-                <div>
-                    <h4>Finance & Trading</h4>
-                    <p>Monitor charts and data while working on your main screen</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">🎬</span>
-                <div>
-                    <h4>Content Creators</h4>
-                    <p>Keep chat, comments, or timeline visible while editing</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">📝</span>
-                <div>
-                    <h4>Writers</h4>
-                    <p>Research on one screen, write on the other</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <span class="use-case-icon">🎮</span>
-                <div>
-                    <h4>Streamers</h4>
-                    <p>Monitor OBS, chat, or alerts on your iPhone</p>
+                    <h3>True Display</h3>
+                    <p>Works as a real monitor — extend your desktop and move windows freely.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="specs" id="specs">
+    <section class="setup" id="setup">
         <div class="section-header fade-in">
-            <h2>Technical Specs</h2>
-            <p>Built for performance and reliability.</p>
+            <h2>First-Time Setup</h2>
+            <p>Get started in just a few minutes.</p>
         </div>
-        <div class="specs-container">
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>MJPEG encoding for minimal latency</span>
+        <div class="setup-steps">
+            <div class="setup-step fade-in stagger-1">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Download Both Apps</h3>
+                    <p>Get LilDisplay from the App Store on your iPhone, and download the free Mac companion app from this website.</p>
                 </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>Metal GPU-accelerated rendering</span>
+            </div>
+            <div class="setup-step fade-in stagger-2">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Open the Mac App</h3>
+                    <p>Double-click to open. If you see an "unidentified developer" warning, right-click the app and select <code>Open</code>.</p>
                 </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>USB via peertalk/usbmuxd protocol</span>
+            </div>
+            <div class="setup-step fade-in stagger-3">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Grant Permissions</h3>
+                    <p>The Mac app needs a few permissions to work. Go to <code>System Settings → Privacy & Security</code> and enable:</p>
+                    <div class="permission-list">
+                        <div class="permission-item"><strong>Screen Recording</strong> — to capture your display</div>
+                        <div class="permission-item"><strong>Accessibility</strong> — for touch/trackpad input</div>
+                        <div class="permission-item"><strong>Local Network</strong> — for WiFi connection (optional)</div>
+                    </div>
                 </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>WiFi P2P via Bonjour/AWDL</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>Dynamic resolution scaling</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>Automatic reconnection</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>Touch input with CGEvent injection</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>macOS Sequoia compatible</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-check">✓</span>
-                    <span>iPhone 6s+ / iOS 15+ support</span>
+            </div>
+            <div class="setup-step fade-in stagger-4">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Connect & Enjoy</h3>
+                    <p>Open LilDisplay on your iPhone, connect via USB or WiFi, and tap <strong>Connect</strong>. Your new display is ready!</p>
                 </div>
             </div>
         </div>
@@ -1081,7 +860,7 @@
 
     <section class="pricing" id="pricing">
         <div class="section-header fade-in">
-            <h2>Simple, One-Time Pricing</h2>
+            <h2>Simple Pricing</h2>
             <p>No subscriptions. Pay once, use forever.</p>
         </div>
         <div class="pricing-card scale-in">
@@ -1094,32 +873,27 @@
                 </li>
                 <li>
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    Display & Remote modes
-                </li>
-                <li>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                     Touch & trackpad input
                 </li>
                 <li>
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    120Hz ProMotion support
+                    Portrait & landscape modes
                 </li>
                 <li>
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                    All future updates included
+                    All future updates
                 </li>
             </ul>
-            <a href="#download" class="btn btn-primary" style="width: 100%; justify-content: center;">Get LilDisplay</a>
+            <a href="javascript:void(0)" class="btn btn-primary" style="width: 100%; justify-content: center;">Get LilDisplay</a>
             <p class="trial-note">✨ 3-day free trial included</p>
         </div>
     </section>
 
-
     <footer>
-        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#12616762627d6066527e7b7e767b61627e736b3c736262">Support</a></p>
+        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:support@lildisplay.app">Support</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Scroll Animation Observer
         const observerOptions = {
             root: null,
@@ -1135,8 +909,7 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+        document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
             observer.observe(el);
         });
 
