@@ -648,6 +648,85 @@
             color: var(--green);
         }
 
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-100);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--gray-100);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-600);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--darker);
+            color: var(--gray-100);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
         /* Footer */
         footer {
             position: relative;
@@ -702,6 +781,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#setup">How to Setup</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="LilDisplay-Mac.dmg" class="btn btn-primary" download>Get Started</a>
         </div>
@@ -889,11 +969,43 @@
         </div>
     </section>
 
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <h2>Get in Touch</h2>
+            <p>Questions, feedback, or just want to say hi? We'd love to hear from you.</p>
+        </div>
+        <div class="contact-card scale-in">
+            <form class="contact-form" action="https://formspree.io/f/xkonoynw" method="POST">
+                <div class="form-group">
+                    <label for="email">Your Email (optional)</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="feedback">💬 Feedback & Suggestions</option>
+                        <option value="bug">🐛 Report a Bug</option>
+                        <option value="help">❓ Need Help</option>
+                        <option value="other">📝 Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us what's on your mind..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary contact-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:support@lildisplay.app">Support</a></p>
+        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#d7a4a2a7a7b8a5a397bbbebbb3bea4a7bbb6aef9b6a7a7">Support</a></p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Scroll Animation Observer
         const observerOptions = {
             root: null,
