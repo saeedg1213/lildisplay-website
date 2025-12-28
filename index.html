@@ -291,6 +291,40 @@
             align-items: center;
         }
 
+        .privacy-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: 12px;
+            max-width: 500px;
+        }
+
+        .privacy-notice svg {
+            flex-shrink: 0;
+            color: var(--green);
+        }
+
+        .privacy-notice p {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .privacy-notice a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        .privacy-notice a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 900px) {
             .hero-top {
                 flex-direction: column;
@@ -498,6 +532,17 @@
         .feature-icon {
             font-size: 1.5rem;
             flex-shrink: 0;
+            color: var(--green);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
         }
 
         .feature-card h3 {
@@ -841,6 +886,10 @@
                                 <span class="system-req">Requires macOS 14 Sonoma or later</span>
                             </div>
                         </div>
+                        <div class="privacy-notice">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <p>LilDisplay uses Apple's peer-to-peer technology to connect your devices directly via USB or local WiFi. No data leaves your network and no internet connection is required. <a href="privacy.html">Privacy Policy</a></p>
+                        </div>
                     </div>
                 </div>
                 
@@ -893,28 +942,28 @@
         </div>
         <div class="features-grid">
             <div class="feature-card fade-in stagger-1">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                 <div>
                     <h3>Ultra-Low Latency</h3>
                     <p>Under 10ms latency with USB connection. Feels instant and responsive.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-2">
-                <div class="feature-icon">🔌</div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
                 <div>
                     <h3>USB or WiFi</h3>
                     <p>Connect via USB for best performance, or go wireless with WiFi P2P.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-3">
-                <div class="feature-icon">👆</div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 11l3 3 7-7M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                 <div>
                     <h3>Touch & Trackpad</h3>
                     <p>Use your iPhone as a touchscreen or trackpad to control your Mac.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-4">
-                <div class="feature-icon">🖥️</div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
                 <div>
                     <h3>True Display</h3>
                     <p>Works as a real monitor — extend your desktop and move windows freely.</p>
@@ -967,7 +1016,7 @@
                         <img src="setup/screen-recording.png" alt="Screen Recording permission" class="setup-image-small">
                         <img src="setup/local-network-prompt.png" alt="Local Network permission" class="setup-image-small">
                     </div>
-                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--gray-600);">💡 If a prompt doesn't appear, enable manually in <code>System Settings → Privacy & Security</code>:</p>
+                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--gray-600);">Tip: If a prompt doesn't appear, enable manually in <code>System Settings → Privacy & Security</code>:</p>
                     <div class="permission-list" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
                         <div class="permission-item" style="font-size: 0.85rem;"><strong>Accessibility</strong></div>
                         <div class="permission-item" style="font-size: 0.85rem;"><strong>Screen & System Audio Recording</strong></div>
@@ -1015,7 +1064,7 @@
                 </li>
             </ul>
             <a href="javascript:void(0)" class="btn btn-primary" style="width: 100%; justify-content: center;">Get LilDisplay</a>
-            <p class="trial-note">✨ Start with a 3-day free trial</p>
+            <p class="trial-note">Start with a 3-day free trial</p>
         </div>
     </section>
 
@@ -1033,10 +1082,10 @@
                 <div class="form-group">
                     <label for="subject">Subject</label>
                     <select id="subject" name="subject">
-                        <option value="feedback">💬 Feedback & Suggestions</option>
-                        <option value="bug">🐛 Report a Bug</option>
-                        <option value="help">❓ Need Help</option>
-                        <option value="other">📝 Other</option>
+                        <option value="feedback">Feedback & Suggestions</option>
+                        <option value="bug">Report a Bug</option>
+                        <option value="help">Need Help</option>
+                        <option value="other">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
