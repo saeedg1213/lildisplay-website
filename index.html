@@ -589,6 +589,33 @@
             color: var(--green);
         }
 
+        .setup-image {
+            margin-top: 1rem;
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .setup-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .setup-image-small {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .setup-image-small:hover {
+            transform: scale(1.02);
+        }
+
         /* Pricing */
         .pricing {
             text-align: center;
@@ -899,7 +926,7 @@
     <section class="setup" id="setup">
         <div class="section-header fade-in">
             <h2>First-Time Setup</h2>
-            <p>Get started in just a few seconds.</p>
+            <p>Get started in just a few steps.</p>
         </div>
         <div class="setup-steps">
             <div class="setup-step fade-in stagger-1">
@@ -912,24 +939,47 @@
             <div class="setup-step fade-in stagger-2">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <h3>Open the Mac App</h3>
-                    <p>Double-click to open. If you see an "unidentified developer" warning, right-click the app and select <code>Open</code>.</p>
+                    <h3>Install the Mac App</h3>
+                    <p>Open the downloaded DMG file and drag <strong>LilDisplay Mac</strong> to your Applications folder.</p>
+                    <img src="setup/install-dmg.png" alt="Drag LilDisplay Mac to Applications" class="setup-image" style="max-width: 450px; display: block; margin: 1rem auto;">
                 </div>
             </div>
             <div class="setup-step fade-in stagger-3">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <h3>Grant Permissions</h3>
-                    <p>The Mac app needs a few permissions to work. Go to <code>System Settings → Privacy & Security</code> and enable:</p>
-                    <div class="permission-list">
-                        <div class="permission-item"><strong>Screen Recording</strong> — to capture your display</div>
-                        <div class="permission-item"><strong>Accessibility</strong> — for touch/trackpad input</div>
-                        <div class="permission-item"><strong>Local Network</strong> — for WiFi connection (optional)</div>
-                    </div>
+                    <h3>Open the App</h3>
+                    <p>Double-click to launch. macOS will show a security prompt saying the app was downloaded from the internet — click <strong>Open</strong> to continue.</p>
+                    <img src="setup/open-prompt.png" alt="Click Open to launch the app" class="setup-image" style="max-width: 450px; display: block; margin: 1rem auto;">
                 </div>
             </div>
             <div class="setup-step fade-in stagger-4">
                 <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Grant Permissions</h3>
+                    <p>The app will request a few permissions. Simply click <strong>Allow</strong> on each prompt:</p>
+                    <div class="permission-list">
+                        <div class="permission-item"><strong>Screen Access</strong> — to capture your virtual display</div>
+                        <div class="permission-item"><strong>Screen Recording</strong> — to record screen content</div>
+                        <div class="permission-item"><strong>Local Network</strong> — for WiFi connection</div>
+                    </div>
+                    <div class="setup-images-grid">
+                        <img src="setup/screen-access-prompt.png" alt="Screen Access permission" class="setup-image-small">
+                        <img src="setup/screen-recording.png" alt="Screen Recording permission" class="setup-image-small">
+                        <img src="setup/local-network-prompt.png" alt="Local Network permission" class="setup-image-small">
+                    </div>
+                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--gray-600);">💡 If a prompt doesn't appear, enable manually in <code>System Settings → Privacy & Security</code>:</p>
+                    <div class="permission-list" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
+                        <div class="permission-item" style="font-size: 0.85rem;"><strong>Accessibility</strong></div>
+                        <div class="permission-item" style="font-size: 0.85rem;"><strong>Screen & System Audio Recording</strong></div>
+                    </div>
+                    <div class="setup-images-grid">
+                        <img src="setup/settings-accessibility.png" alt="Accessibility in System Settings" class="setup-image-small">
+                        <img src="setup/settings-screen-recording.png" alt="Screen Recording in System Settings" class="setup-image-small">
+                    </div>
+                </div>
+            </div>
+            <div class="setup-step fade-in stagger-5">
+                <div class="step-number">5</div>
                 <div class="step-content">
                     <h3>Connect & Enjoy</h3>
                     <p>Open LilDisplay on your iPhone, connect via USB or WiFi, and tap <strong>Connect</strong>. Your new display is ready!</p>
