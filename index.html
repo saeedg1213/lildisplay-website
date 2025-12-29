@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +21,108 @@
             --gray-800: #272A27;
             --gradient: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
             --gradient-soft: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 170, 255, 0.15) 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --nav-bg: rgba(5, 5, 8, 0.8);
+        }
+
+        /* Light mode colors */
+        [data-theme="light"] {
+            --dark: #FFFFFF;
+            --darker: #F5F7FA;
+            --gray-100: #1A1A1A;
+            --gray-400: #555555;
+            --gray-600: #888888;
+            --gray-800: #CCCCCC;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --card-border: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .bg-glow {
+            opacity: 0.12;
+        }
+
+        [data-theme="light"] .bg-grid {
+            background-image: 
+                linear-gradient(rgba(0, 170, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 170, 255, 0.08) 1px, transparent 1px);
+        }
+
+        [data-theme="light"] .stats-bar,
+        [data-theme="light"] .setup {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="light"] .form-group input,
+        [data-theme="light"] .form-group select,
+        [data-theme="light"] .form-group textarea {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        [data-theme="light"] .form-group select option {
+            background: #fff;
+        }
+
+        [data-theme="light"] .step-content code {
+            background: rgba(0, 170, 255, 0.15);
+        }
+
+        [data-theme="light"] footer {
+            border-top-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-left: 0rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.08);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-100);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(15deg);
+        }
+
+        [data-theme="light"] .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+
+        [data-theme="light"] .sun-icon { display: block; }
+        [data-theme="light"] .moon-icon { display: none; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         * {
@@ -39,6 +141,7 @@
             color: var(--gray-100);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         /* Background Effects */
@@ -54,6 +157,7 @@
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
+            transition: background-image 0.3s ease;
         }
 
         .bg-glow {
@@ -65,6 +169,7 @@
             opacity: 0.4;
             pointer-events: none;
             z-index: 0;
+            transition: opacity 0.3s ease;
         }
 
         .bg-glow-1 {
@@ -88,9 +193,10 @@
             right: 0;
             z-index: 100;
             padding: 1.25rem 2rem;
-            background: rgba(5, 5, 8, 0.8);
+            background: var(--nav-bg);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+            transition: background 0.3s ease;
         }
 
         .nav-inner {
@@ -156,6 +262,10 @@
         .btn-mac {
             background: linear-gradient(135deg, var(--blue) 0%, var(--deep-blue) 100%);
             color: var(--gray-100);
+        }
+
+        [data-theme="light"] .btn-mac {
+            color: #FFFFFF;
         }
 
         .btn-mac:hover {
@@ -376,10 +486,10 @@
 
         .screenshot-track {
             display: flex;
-            gap: 5rem;  /* Changed from 2rem to 1rem for closer gaps */
+            gap: 5rem;
             animation: scroll-carousel 40s linear infinite;
             width: max-content;
-            align-items: center;  /* Add this to vertically center different sized images */
+            align-items: center;
         }
 
         .screenshot-track:hover {
@@ -444,6 +554,7 @@
             background: rgba(10, 10, 15, 0.8);
             border-top: 1px solid rgba(0, 170, 255, 0.1);
             border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+            transition: background 0.3s ease;
         }
 
         .stats-grid {
@@ -500,7 +611,7 @@
             font-size: 1.1rem;
         }
 
-        /* Features Section (Merged with Use Cases) */
+        /* Features Section */
         .features-grid {
             max-width: 1000px;
             margin: 0 auto;
@@ -516,8 +627,8 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 1.5rem;
             display: flex;
@@ -530,6 +641,10 @@
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(0, 170, 255, 0.2);
             transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .feature-card:hover {
+            background: rgba(0, 0, 0, 0.05);
         }
 
         .feature-icon {
@@ -563,6 +678,7 @@
         /* Setup Section */
         .setup {
             background: rgba(10, 10, 15, 0.6);
+            transition: background 0.3s ease;
         }
 
         .setup-steps {
@@ -577,10 +693,11 @@
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 1.5rem;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .step-number {
@@ -670,13 +787,16 @@
         }
 
         .pricing-card {
+            position: relative;
             max-width: 400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--card-bg);
             border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 24px;
             padding: 2.5rem;
+            transition: background 0.3s ease;
         }
+
         .currency-flag {
             position: absolute;
             top: 1rem;
@@ -684,6 +804,7 @@
             font-size: 3rem;
             opacity: 0.8;
         }
+
         .price-tag {
             font-size: 4rem;
             font-weight: 800;
@@ -718,6 +839,10 @@
             color: var(--gray-100);
         }
 
+        [data-theme="light"] .pricing-features li {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+        }
+
         .pricing-features li svg {
             color: var(--green);
             flex-shrink: 0;
@@ -737,10 +862,11 @@
         .contact-card {
             max-width: 500px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--card-bg);
             border: 1px solid rgba(0, 170, 255, 0.2);
             border-radius: 24px;
             padding: 2rem;
+            transition: background 0.3s ease;
         }
 
         .contact-form {
@@ -788,6 +914,12 @@
             background: rgba(255, 255, 255, 0.08);
         }
 
+        [data-theme="light"] .form-group input:focus,
+        [data-theme="light"] .form-group select:focus,
+        [data-theme="light"] .form-group textarea:focus {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
         .form-group select {
             cursor: pointer;
         }
@@ -817,6 +949,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--gray-600);
             font-size: 0.9rem;
+            transition: border-color 0.3s ease;
         }
 
         footer a {
@@ -848,13 +981,14 @@
         .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
         .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
         .hero-image { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+
         /* ========== MOBILE PORTRAIT IMPROVEMENTS ========== */
         @media (max-width: 600px) {
             /* Navigation */
             .setup-step img {
-            max-width: 100% !important;
-            width: 100% !important;
-            height: auto;
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto;
             }
             nav {
                 padding: 1rem 1rem;
@@ -866,12 +1000,23 @@
             }
             
             .nav-links {
-                display: none; /* Hide nav links on mobile - consider hamburger menu */
+                display: none;
             }
             
             .nav-inner .btn {
                 padding: 0.6rem 1.2rem;
                 font-size: 0.85rem;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                margin-left: 0rem;
+            }
+
+            .theme-toggle svg {
+                width: 16px;
+                height: 16px;
             }
             
             /* Hero Section */
@@ -1038,7 +1183,7 @@
             .form-group select,
             .form-group textarea {
                 padding: 0.75rem;
-                font-size: 16px; /* Prevents iOS zoom on focus */
+                font-size: 16px;
             }
             
             /* Footer */
@@ -1095,7 +1240,13 @@
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#setup" class="btn btn-primary">Get Started</a>
+            <div class="nav-right">
+                <a href="#setup" class="btn btn-primary">Get Started</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -1345,10 +1496,25 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#d7a4a2a7a7b8a5a397bbbebbb3bea4a7bbb6aef9b6a7a7">Support</a></p>
+        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:support@lildisplay.app">Support</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+
         // Scroll Animation Observer
         const observerOptions = {
             root: null,
