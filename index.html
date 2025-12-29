@@ -73,10 +73,10 @@
             border-top-color: rgba(0, 0, 0, 0.08);
         }
 
-        /* Theme toggle button - Animated */
+        /* Dark mode - Sun button (warm/orange glow) */
         .theme-toggle {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(145deg, rgba(255, 200, 50, 0.2), rgba(255, 150, 0, 0.1));
+            border: 1px solid rgba(255, 180, 0, 0.3);
             border-radius: 50%;
             width: 46px;
             height: 46px;
@@ -88,7 +88,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.2),
+                0 4px 15px rgba(255, 150, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             margin-left: 0;
         }
@@ -110,10 +110,10 @@
         .theme-toggle:hover {
             transform: scale(1.1) rotate(15deg);
             box-shadow: 
-                0 6px 25px rgba(0, 170, 255, 0.4),
-                0 0 30px rgba(0, 255, 136, 0.2),
+                0 6px 25px rgba(255, 150, 0, 0.5),
+                0 0 30px rgba(255, 200, 50, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(0, 170, 255, 0.4);
+            border-color: rgba(255, 180, 0, 0.5);
         }
 
         .theme-toggle:active {
@@ -123,7 +123,7 @@
         .theme-toggle svg {
             width: 22px;
             height: 22px;
-            color: var(--gray-100);
+            color: #FF9500;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             filter: drop-shadow(0 0 3px currentColor);
         }
@@ -132,13 +132,13 @@
             filter: drop-shadow(0 0 8px currentColor);
         }
 
-        /* Moon icon - dark mode */
-        .moon-icon { 
+        /* Sun icon - dark mode (click to go light) */
+        .sun-icon { 
             display: block;
-            animation: moonFloat 3s ease-in-out infinite;
+            animation: sunPulse 2s ease-in-out infinite;
         }
 
-        .sun-icon { 
+        .moon-icon { 
             display: none;
         }
 
@@ -147,13 +147,13 @@
             50% { transform: translateY(-2px) rotate(5deg); }
         }
 
-        /* Sun icon - light mode */
-        [data-theme="light"] .sun-icon { 
+        /* Moon icon - light mode (click to go dark) */
+        [data-theme="light"] .moon-icon { 
             display: block;
-            animation: sunPulse 2s ease-in-out infinite, sunSpin 20s linear infinite;
+            animation: moonFloat 3s ease-in-out infinite;
         }
 
-        [data-theme="light"] .moon-icon { 
+        [data-theme="light"] .sun-icon { 
             display: none;
         }
 
@@ -167,25 +167,25 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Light mode button style */
+        /* Light mode - Moon button (cool/blue glow) */
         [data-theme="light"] .theme-toggle {
-            background: linear-gradient(145deg, rgba(255, 200, 50, 0.2), rgba(255, 150, 0, 0.1));
-            border-color: rgba(255, 180, 0, 0.3);
+            background: linear-gradient(145deg, rgba(100, 150, 255, 0.2), rgba(50, 100, 200, 0.1));
+            border-color: rgba(100, 150, 255, 0.3);
             box-shadow: 
-                0 4px 15px rgba(255, 150, 0, 0.2),
+                0 4px 15px rgba(100, 150, 255, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         [data-theme="light"] .theme-toggle:hover {
             box-shadow: 
-                0 6px 25px rgba(255, 150, 0, 0.5),
-                0 0 30px rgba(255, 200, 50, 0.3),
+                0 6px 25px rgba(100, 150, 255, 0.5),
+                0 0 30px rgba(150, 200, 255, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 180, 0, 0.5);
+            border-color: rgba(100, 150, 255, 0.5);
         }
 
         [data-theme="light"] .theme-toggle svg {
-            color: #FF9500;
+            color: #6495ED;
         }
 
         /* Theme transition animation */
