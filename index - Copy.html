@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,29 +17,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Neo-Brutalist Colors - Dark Mode */
-            --primary: #00FF88;
-            --secondary: #00CCFF;
-            --accent: #FF6B35;
-            --yellow: #FFE135;
-            --pink: #FF61D8;
-            --bg: #0D0D0D;
-            --bg-elevated: #1A1A1A;
-            --text: #FFFFFF;
-            --text-muted: #888888;
-            --border: #FFFFFF;
-            --border-width: 3px;
-            --shadow-offset: 6px;
-            --shadow-color: rgba(0, 255, 136, 0.4);
+            /* Light Mode (Default) - Paper/Document Feel */
+            --primary: #2563EB;
+            --primary-light: #3B82F6;
+            --secondary: #0891B2;
+            --accent: #DC2626;
+            --bg: #FAF9F7;
+            --bg-elevated: #FFFFFF;
+            --bg-subtle: #F3F2EF;
+            --text: #1A1A1A;
+            --text-muted: #6B7280;
+            --border: #1A1A1A;
+            --border-light: #E5E5E5;
+            --border-width: 2px;
         }
 
-        [data-theme="light"] {
-            --bg: #F5F0E8;
-            --bg-elevated: #FFFFFF;
-            --text: #0D0D0D;
-            --text-muted: #555555;
-            --border: #0D0D0D;
-            --shadow-color: rgba(0, 0, 0, 0.3);
+        [data-theme="dark"] {
+            --bg: #111111;
+            --bg-elevated: #1A1A1A;
+            --bg-subtle: #222222;
+            --text: #F5F5F5;
+            --text-muted: #9CA3AF;
+            --border: #F5F5F5;
+            --border-light: #333333;
         }
 
         * {
@@ -61,20 +61,21 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Brutalist Grid Background */
+        /* Subtle paper texture background */
         .bg-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 80px 80px;
-            opacity: 0.03;
+            opacity: 0.4;
             pointer-events: none;
             z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        [data-theme="dark"] .bg-pattern {
+            opacity: 0.15;
         }
 
         /* Navigation */
@@ -103,17 +104,6 @@
             font-size: 1.5rem;
             color: var(--text);
             letter-spacing: -0.02em;
-            position: relative;
-        }
-
-        .logo::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            z-index: -1;
         }
 
         .nav-links {
@@ -127,9 +117,8 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             transition: color 0.2s;
+            padding: 0.5rem 0;
             position: relative;
         }
 
@@ -140,10 +129,10 @@
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: var(--primary);
             transition: width 0.2s;
         }
@@ -158,100 +147,140 @@
             gap: 1rem;
         }
 
-        /* Brutalist Buttons */
+        /* Buttons - Clean, Bold, Thick */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.875rem 1.5rem;
+            padding: 1rem 1.75rem;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
             text-decoration: none;
             cursor: pointer;
             border: var(--border-width) solid var(--border);
-            transition: transform 0.15s, box-shadow 0.15s;
+            transition: all 0.2s ease;
             position: relative;
+            background: var(--bg-elevated);
+            color: var(--text);
         }
 
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: var(--border-width) solid transparent;
+            transition: border-color 0.2s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover::before {
+            border-color: var(--border);
+        }
+
+        .btn:hover {
+            background: var(--bg-subtle);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Primary Button - Keep the contrast for download buttons */
         .btn-primary {
             background: var(--primary);
-            color: #000;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+            color: #FFFFFF;
+            border-color: var(--primary);
         }
 
         .btn-primary:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
+            background: var(--primary-light);
+            border-color: var(--primary-light);
         }
 
-        .btn-primary:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--border);
+        .btn-primary::before {
+            border-color: transparent;
         }
 
+        .btn-primary:hover::before {
+            border-color: var(--primary);
+        }
+
+        /* Secondary Button */
         .btn-secondary {
             background: var(--secondary);
-            color: #000;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+            color: #FFFFFF;
+            border-color: var(--secondary);
         }
 
         .btn-secondary:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
+            background: #0EA5C7;
+            border-color: #0EA5C7;
         }
 
+        .btn-secondary::before {
+            border-color: transparent;
+        }
+
+        .btn-secondary:hover::before {
+            border-color: var(--secondary);
+        }
+
+        /* Outline Button */
         .btn-outline {
             background: transparent;
             color: var(--text);
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--primary);
+            border-color: var(--border);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
-            color: #000;
-            transform: translate(-2px, -2px);
-            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
+            background: var(--text);
+            color: var(--bg);
         }
 
-        /* Theme Toggle - Brutalist Style */
+        /* Theme Toggle - Blended into page */
         .theme-toggle {
-            width: 48px;
-            height: 48px;
-            background: var(--bg-elevated);
-            border: var(--border-width) solid var(--border);
+            width: 44px;
+            height: 44px;
+            background: var(--bg);
+            border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 4px 4px 0 var(--border);
+            transition: all 0.2s ease;
+            border-radius: 0;
         }
 
         .theme-toggle:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0 var(--border);
+            background: var(--bg-subtle);
         }
 
-        .theme-toggle:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--border);
+        .theme-toggle:hover::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: var(--border-width) solid var(--border);
+            pointer-events: none;
         }
 
         .theme-toggle svg {
             width: 24px;
             height: 24px;
-            color: var(--yellow);
+            color: var(--text);
         }
 
-        .sun-icon { display: block; }
-        .moon-icon { display: none; }
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
 
-        [data-theme="light"] .sun-icon { display: none; }
-        [data-theme="light"] .moon-icon { display: block; }
-        [data-theme="light"] .theme-toggle svg { color: #6B5B95; }
+        [data-theme="dark"] .sun-icon { display: block; }
+        [data-theme="dark"] .moon-icon { display: none; }
 
         /* Hero Section */
         .hero {
@@ -283,7 +312,7 @@
         }
 
         .hero-device:hover {
-            transform: rotate(-2deg) scale(1.02);
+            transform: translateY(-8px);
         }
 
         .hero-device img {
@@ -300,7 +329,7 @@
         }
 
         .hero-device.mac:hover {
-            transform: rotate(1deg) scale(1.02);
+            transform: translateY(-8px);
         }
 
         .hero-center {
@@ -315,24 +344,20 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: var(--yellow);
+            background: var(--bg-subtle);
             border: var(--border-width) solid var(--border);
             font-family: 'Space Mono', monospace;
             font-size: 0.8rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #000;
+            color: var(--text);
             margin-bottom: 1.5rem;
-            transform: rotate(-1deg);
-            box-shadow: 4px 4px 0 var(--border);
         }
 
         .badge-dot {
             width: 8px;
             height: 8px;
             background: var(--primary);
-            border: 2px solid #000;
+            border-radius: 50%;
             animation: blink 1s infinite;
         }
 
@@ -351,19 +376,7 @@
         }
 
         h1 .highlight {
-            position: relative;
-            display: inline-block;
-        }
-
-        h1 .highlight::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -4px;
-            right: -4px;
-            height: 35%;
-            z-index: -1;
-            transform: skewX(-3deg);
+            color: var(--primary);
         }
 
         .hero-subtitle {
@@ -402,23 +415,21 @@
             letter-spacing: 0.05em;
         }
 
-        /* Privacy Notice - Brutalist */
+        /* Privacy Notice - Clean */
         .privacy-notice {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
             padding: 1rem 1.5rem;
-            background: var(--bg-elevated);
-            border: var(--border-width) solid var(--border);
+            background: var(--bg-subtle);
+            border: var(--border-width) solid var(--border-light);
             max-width: 550px;
-            transform: rotate(0.5deg);
-            box-shadow: 4px 4px 0 var(--primary);
         }
 
         .privacy-notice svg {
             flex-shrink: 0;
-            color: var(--primary);
+            color: var(--text-muted);
         }
 
         .privacy-notice p {
@@ -432,12 +443,10 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 2px solid var(--primary);
         }
 
         .privacy-notice a:hover {
-            background: var(--primary);
-            color: #000;
+            text-decoration: underline;
         }
 
         /* Screenshot Carousel */
@@ -451,6 +460,7 @@
             margin: 0 auto;
             overflow: hidden;
             padding: 2rem 0;
+            background: var(--bg);
         }
 
         .screenshot-track {
@@ -473,21 +483,22 @@
         .devices-mockup {
             height: 320px;
             width: auto;
-            border: var(--border-width) solid var(--border);
+            border: var(--border-width) solid var(--border-light);
             flex-shrink: 0;
             transition: transform 0.3s ease;
-            box-shadow: 6px 6px 0 var(--border);
+            background: var(--bg-elevated);
         }
 
         .devices-mockup:hover {
-            transform: rotate(-1deg) scale(1.02);
+            transform: translateY(-4px);
         }
 
-        /* Stats Bar - Brutalist */
+        /* Stats Bar - Clean, No Background Color */
         .stats-bar {
             position: relative;
             z-index: 1;
             padding: 0;
+            background: var(--bg);
             border-top: var(--border-width) solid var(--border);
             border-bottom: var(--border-width) solid var(--border);
         }
@@ -500,9 +511,10 @@
         }
 
         .stat-item {
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
-            border-right: var(--border-width) solid var(--border);
+            border-right: 1px solid var(--border-light);
+            background: var(--bg);
             transition: background 0.2s;
         }
 
@@ -511,24 +523,22 @@
         }
 
         .stat-item:hover {
-            background: var(--yellow);
+            background: var(--bg-subtle);
         }
 
         .stat-item h3 {
             font-family: 'Space Mono', monospace;
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            color: #000;
+            color: var(--text);
             margin-bottom: 0.25rem;
         }
 
         .stat-item p {
-            font-family: 'Space Mono', monospace;
-            color: #000;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
         }
 
         @media (max-width: 768px) {
@@ -536,7 +546,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .stat-item {
-                border-bottom: var(--border-width) solid var(--border);
+                border-bottom: 1px solid var(--border-light);
             }
             .stat-item:nth-child(2) {
                 border-right: none;
@@ -561,23 +571,9 @@
 
         .section-header h2 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            right: 0;
-            height: 12px;
-            background: var(--secondary);
-            z-index: -1;
-            transform: skewX(-5deg);
         }
 
         .section-header p {
@@ -585,7 +581,7 @@
             font-size: 1.1rem;
         }
 
-        /* Features Grid - Brutalist Cards */
+        /* Features Grid - Clean Cards */
         .features-grid {
             max-width: 1000px;
             margin: 0 auto;
@@ -602,45 +598,43 @@
 
         .feature-card {
             background: var(--bg-elevated);
-            border: var(--border-width) solid var(--border);
+            border: var(--border-width) solid var(--border-light);
             padding: 1.75rem;
             display: flex;
             gap: 1.25rem;
             align-items: flex-start;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+            transition: all 0.2s ease;
         }
 
         .feature-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: calc(var(--shadow-offset) + 4px) calc(var(--shadow-offset) + 4px) 0 var(--border);
+            border-color: var(--border);
+            background: var(--bg-subtle);
         }
-
-        .feature-card:nth-child(1) { transform: rotate(-0.5deg); }
-        .feature-card:nth-child(2) { transform: rotate(0.5deg); }
-        .feature-card:nth-child(3) { transform: rotate(0.3deg); }
-        .feature-card:nth-child(4) { transform: rotate(-0.3deg); }
-
-        .feature-card:nth-child(1):hover { transform: rotate(-0.5deg) translate(-4px, -4px); }
-        .feature-card:nth-child(2):hover { transform: rotate(0.5deg) translate(-4px, -4px); }
-        .feature-card:nth-child(3):hover { transform: rotate(0.3deg) translate(-4px, -4px); }
-        .feature-card:nth-child(4):hover { transform: rotate(-0.3deg) translate(-4px, -4px); }
 
         .feature-icon {
             width: 48px;
             height: 48px;
-            background: var(--primary);
-            border: var(--border-width) solid var(--border);
+            background: var(--bg-subtle);
+            border: var(--border-width) solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
         .feature-icon svg {
             width: 24px;
             height: 24px;
-            color: #000;
+            color: var(--text);
+        }
+
+        .feature-card:hover .feature-icon svg {
+            color: #FFFFFF;
         }
 
         .feature-card h3 {
@@ -655,11 +649,11 @@
             line-height: 1.6;
         }
 
-        /* Setup Section - Brutalist */
+        /* Setup Section - Clean */
         .setup {
-            background: var(--bg-elevated);
-            border-top: var(--border-width) solid var(--border);
-            border-bottom: var(--border-width) solid var(--border);
+            background: var(--bg-subtle);
+            border-top: var(--border-width) solid var(--border-light);
+            border-bottom: var(--border-width) solid var(--border-light);
         }
 
         .setup-steps {
@@ -674,22 +668,20 @@
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
-            background: var(--bg);
-            border: var(--border-width) solid var(--border);
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border-light);
             padding: 1.75rem;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
         }
 
         .setup-step:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--border);
+            border-color: var(--border);
         }
 
         .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--secondary);
+            width: 48px;
+            height: 48px;
+            background: var(--bg-subtle);
             border: var(--border-width) solid var(--border);
             display: flex;
             align-items: center;
@@ -697,7 +689,7 @@
             font-family: 'Space Mono', monospace;
             font-weight: 700;
             font-size: 1.25rem;
-            color: #000;
+            color: var(--text);
             flex-shrink: 0;
         }
 
@@ -718,12 +710,12 @@
         }
 
         .step-content code {
-            background: var(--primary);
+            background: var(--bg-subtle);
             padding: 0.2rem 0.5rem;
             font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
-            color: #000;
-            border: 2px solid var(--border);
+            color: var(--text);
+            border: 1px solid var(--border-light);
         }
 
         .permission-list {
@@ -740,8 +732,8 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             padding: 0.5rem;
-            background: var(--bg-elevated);
-            border: 2px solid var(--border);
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-light);
         }
 
         .permission-item::before {
@@ -753,8 +745,7 @@
         .setup-image {
             margin-top: 1rem;
             max-width: 100%;
-            border: var(--border-width) solid var(--border);
-            box-shadow: 6px 6px 0 var(--border);
+            border: var(--border-width) solid var(--border-light);
         }
 
         .setup-images-grid {
@@ -766,16 +757,15 @@
 
         .setup-image-small {
             width: 100%;
-            border: var(--border-width) solid var(--border);
-            box-shadow: 4px 4px 0 var(--border);
+            border: var(--border-width) solid var(--border-light);
             transition: transform 0.2s;
         }
 
         .setup-image-small:hover {
-            transform: rotate(-1deg) scale(1.02);
+            transform: translateY(-2px);
         }
 
-        /* Pricing - Brutalist */
+        /* Pricing - Clean */
         .pricing {
             text-align: center;
         }
@@ -787,50 +777,30 @@
             background: var(--bg-elevated);
             border: var(--border-width) solid var(--border);
             padding: 3rem;
-            box-shadow: 10px 10px 0 var(--border);
-            transform: rotate(-1deg);
-        }
-
-        .pricing-card::before {
-            content: 'BEST VALUE';
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: var(--accent);
-            color: #fff;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.4rem 0.8rem;
-            border: var(--border-width) solid var(--border);
-            transform: rotate(3deg);
-            letter-spacing: 0.05em;
         }
 
         .price-tag {
             font-family: 'Space Mono', monospace;
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 700;
             color: var(--text);
             line-height: 1;
         }
 
         .price-tag sup {
-            font-size: 2rem;
+            font-size: 1.75rem;
             vertical-align: top;
         }
 
         .price-tag .currency {
-            font-size: 2rem;
+            font-size: 1.75rem;
         }
 
         .price-period {
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--text-muted);
             margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
         }
 
         .pricing-features {
@@ -844,7 +814,7 @@
             align-items: center;
             gap: 0.75rem;
             padding: 0.875rem;
-            border-bottom: 2px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
             color: var(--text);
             font-weight: 500;
         }
@@ -856,26 +826,16 @@
         .pricing-features li svg {
             color: var(--primary);
             flex-shrink: 0;
-            background: var(--primary);
-            padding: 4px;
-            border: 2px solid var(--border);
-        }
-
-        .pricing-features li svg polyline {
-            stroke: #000;
         }
 
         .trial-note {
             margin-top: 1.25rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        /* Contact - Brutalist */
+        /* Contact - Clean */
         .contact {
             text-align: center;
         }
@@ -884,10 +844,8 @@
             max-width: 500px;
             margin: 0 auto;
             background: var(--bg-elevated);
-            border: var(--border-width) solid var(--border);
+            border: var(--border-width) solid var(--border-light);
             padding: 2.5rem;
-            box-shadow: 8px 8px 0 var(--border);
-            transform: rotate(0.5deg);
         }
 
         .contact-form {
@@ -902,12 +860,10 @@
 
         .form-group label {
             display: block;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             color: var(--text);
         }
 
@@ -917,11 +873,11 @@
             width: 100%;
             padding: 0.875rem 1rem;
             background: var(--bg);
-            border: var(--border-width) solid var(--border);
+            border: var(--border-width) solid var(--border-light);
             color: var(--text);
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1rem;
-            transition: box-shadow 0.2s, transform 0.2s;
+            transition: border-color 0.2s;
         }
 
         .form-group input::placeholder,
@@ -933,14 +889,13 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            box-shadow: 4px 4px 0 var(--primary);
-            transform: translate(-2px, -2px);
+            border-color: var(--primary);
         }
 
         .form-group select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
             background-size: 18px;
@@ -963,15 +918,15 @@
             margin-top: 0.5rem;
         }
 
-        /* Footer - Brutalist */
+        /* Footer - Clean */
         footer {
             position: relative;
             z-index: 1;
             text-align: center;
             padding: 2rem;
-            border-top: var(--border-width) solid var(--border);
-            background: var(--bg-elevated);
-            font-family: 'Space Mono', monospace;
+            border-top: var(--border-width) solid var(--border-light);
+            background: var(--bg);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 0.85rem;
             color: var(--text-muted);
         }
@@ -979,13 +934,11 @@
         footer a {
             color: var(--text);
             text-decoration: none;
-            border-bottom: 2px solid var(--primary);
-            transition: background 0.2s, color 0.2s;
+            transition: color 0.2s;
         }
 
         footer a:hover {
-            background: var(--primary);
-            color: #000;
+            color: var(--primary);
         }
 
         /* Scroll Animations */
@@ -1070,8 +1023,8 @@
             }
 
             .theme-toggle {
-                width: 42px;
-                height: 42px;
+                width: 40px;
+                height: 40px;
             }
 
             .hero {
@@ -1119,7 +1072,7 @@
             }
 
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
 
             .setup-step {
@@ -1139,7 +1092,6 @@
             .pricing-card {
                 padding: 2rem;
                 margin: 0 0.5rem;
-                transform: rotate(0);
             }
 
             .price-tag {
@@ -1149,11 +1101,10 @@
             .contact-card {
                 padding: 1.5rem;
                 margin: 0 0.5rem;
-                transform: rotate(0);
             }
 
             footer {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -1423,7 +1374,7 @@
                 </li>
             </ul>
             <a href="javascript:void(0)" class="btn btn-primary" style="width: 100%; justify-content: center;">Get LilDisplay</a>
-            <p class="trial-note">★ Start with a 3-day free trial</p>
+            <p class="trial-note">Start with a 3-day free trial</p>
         </div>
     </section>
 
@@ -1473,9 +1424,9 @@
             localStorage.setItem('theme', newTheme);
         }
 
-        // Load saved theme
+        // Load saved theme (default to light)
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
 
