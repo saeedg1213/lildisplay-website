@@ -10,207 +10,36 @@
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="mask-icon" href="favicon/favicon.svg" color="#3B82F6">
-    
 
     <meta name="description" content="Transform your iPhone into a wireless or USB-connected second display for your Mac. Perfect for students, remote workers, and anyone who needs more screen space.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --green: #00FF88;
-            --blue: #00AAFF;
-            --deep-blue: #0066CC;
-            --dark: #0A0F0A;
-            --darker: #050808;
-            --gray-100: #F4F5F4;
-            --gray-400: #A1AAA1;
-            --gray-600: #525B52;
-            --gray-800: #272A27;
-            --gradient: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
-            --gradient-soft: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 170, 255, 0.15) 100%);
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --nav-bg: rgba(5, 5, 8, 0.8);
+            /* Neo-Brutalist Colors - Dark Mode */
+            --primary: #00FF88;
+            --secondary: #00CCFF;
+            --accent: #FF6B35;
+            --yellow: #FFE135;
+            --pink: #FF61D8;
+            --bg: #0D0D0D;
+            --bg-elevated: #1A1A1A;
+            --text: #FFFFFF;
+            --text-muted: #888888;
+            --border: #FFFFFF;
+            --border-width: 3px;
+            --shadow-offset: 6px;
+            --shadow-color: rgba(0, 255, 136, 0.4);
         }
 
-        /* Light mode colors */
         [data-theme="light"] {
-            --dark: #FFFFFF;
-            --darker: #F5F7FA;
-            --gray-100: #1A1A1A;
-            --gray-400: #555555;
-            --gray-600: #888888;
-            --gray-800: #CCCCCC;
-            --card-bg: rgba(0, 0, 0, 0.03);
-            --card-border: rgba(0, 0, 0, 0.08);
-            --nav-bg: rgba(255, 255, 255, 0.9);
-        }
-
-        [data-theme="light"] .bg-glow {
-            opacity: 0.12;
-        }
-
-        [data-theme="light"] .bg-grid {
-            background-image: 
-                linear-gradient(rgba(0, 170, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 170, 255, 0.08) 1px, transparent 1px);
-        }
-
-        [data-theme="light"] .stats-bar,
-        [data-theme="light"] .setup {
-            background: rgba(0, 0, 0, 0.02);
-        }
-
-        [data-theme="light"] .form-group input,
-        [data-theme="light"] .form-group select,
-        [data-theme="light"] .form-group textarea {
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.12);
-        }
-
-        [data-theme="light"] .form-group select option {
-            background: #fff;
-        }
-
-        [data-theme="light"] .step-content code {
-            background: rgba(0, 170, 255, 0.15);
-        }
-
-        [data-theme="light"] footer {
-            border-top-color: rgba(0, 0, 0, 0.08);
-        }
-
-        /* Dark mode - Sun button (warm/orange glow) */
-        .theme-toggle {
-            background: linear-gradient(145deg, rgba(255, 200, 50, 0.2), rgba(255, 150, 0, 0.1));
-            border: 1px solid rgba(255, 180, 0, 0.3);
-            border-radius: 50%;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                0 4px 15px rgba(255, 150, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            margin-left: 0;
-        }
-
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .theme-toggle:hover::before {
-            opacity: 1;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 
-                0 6px 25px rgba(255, 150, 0, 0.5),
-                0 0 30px rgba(255, 200, 50, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 180, 0, 0.5);
-        }
-
-        .theme-toggle:active {
-            transform: scale(0.95);
-        }
-
-        .theme-toggle svg {
-            width: 22px;
-            height: 22px;
-            color: #FF9500;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            filter: drop-shadow(0 0 3px currentColor);
-        }
-
-        .theme-toggle:hover svg {
-            filter: drop-shadow(0 0 8px currentColor);
-        }
-
-        /* Sun icon - dark mode (click to go light) */
-        .sun-icon { 
-            display: block;
-            animation: sunPulse 2s ease-in-out infinite;
-        }
-
-        .moon-icon { 
-            display: none;
-        }
-
-        @keyframes moonFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-2px) rotate(5deg); }
-        }
-
-        /* Moon icon - light mode (click to go dark) */
-        [data-theme="light"] .moon-icon { 
-            display: block;
-            animation: moonFloat 3s ease-in-out infinite;
-        }
-
-        [data-theme="light"] .sun-icon { 
-            display: none;
-        }
-
-        @keyframes sunPulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #FFB800); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #FFB800); }
-        }
-
-        @keyframes sunSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Light mode - Moon button (cool/blue glow) */
-        [data-theme="light"] .theme-toggle {
-            background: linear-gradient(145deg, rgba(100, 150, 255, 0.2), rgba(50, 100, 200, 0.1));
-            border-color: rgba(100, 150, 255, 0.3);
-            box-shadow: 
-                0 4px 15px rgba(100, 150, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        [data-theme="light"] .theme-toggle:hover {
-            box-shadow: 
-                0 6px 25px rgba(100, 150, 255, 0.5),
-                0 0 30px rgba(150, 200, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            border-color: rgba(100, 150, 255, 0.5);
-        }
-
-        [data-theme="light"] .theme-toggle svg {
-            color: #6495ED;
-        }
-
-        /* Theme transition animation */
-        .theme-toggle.switching svg {
-            animation: iconSwitch 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes iconSwitch {
-            0% { transform: scale(1) rotate(0deg); opacity: 1; }
-            50% { transform: scale(0) rotate(180deg); opacity: 0; }
-            100% { transform: scale(1) rotate(360deg); opacity: 1; }
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            --bg: #F5F0E8;
+            --bg-elevated: #FFFFFF;
+            --text: #0D0D0D;
+            --text-muted: #555555;
+            --border: #0D0D0D;
+            --shadow-color: rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -224,53 +53,28 @@
         }
 
         body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--darker);
-            color: var(--gray-100);
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Background Effects */
-        .bg-grid {
+        /* Brutalist Grid Background */
+        .bg-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 170, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 170, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.03;
             pointer-events: none;
             z-index: 0;
-            transition: background-image 0.3s ease;
-        }
-
-        .bg-glow {
-            position: fixed;
-            width: 800px;
-            height: 800px;
-            border-radius: 50%;
-            filter: blur(150px);
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .bg-glow-1 {
-            top: -400px;
-            right: -200px;
-            background: var(--blue);
-        }
-
-        .bg-glow-2 {
-            bottom: -400px;
-            left: -200px;
-            background: var(--green);
-            opacity: 0.25;
         }
 
         /* Navigation */
@@ -280,11 +84,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.25rem 2rem;
-            background: var(--nav-bg);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
-            transition: background 0.3s ease;
+            padding: 1rem 2rem;
+            background: var(--bg);
+            border-bottom: var(--border-width) solid var(--border);
         }
 
         .nav-inner {
@@ -296,70 +98,161 @@
         }
 
         .logo {
+            font-family: 'Space Mono', monospace;
             font-weight: 700;
             font-size: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
             letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--primary);
+            z-index: -1;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--gray-400);
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             transition: color 0.2s;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--gray-100);
+            color: var(--text);
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Brutalist Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px;
-            font-weight: 600;
+            padding: 0.875rem 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
             font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
             text-decoration: none;
-            transition: all 0.3s ease;
             cursor: pointer;
-            border: none;
+            border: var(--border-width) solid var(--border);
+            transition: transform 0.15s, box-shadow 0.15s;
+            position: relative;
         }
 
         .btn-primary {
-            background: var(--gradient);
-            color: var(--dark);
+            background: var(--primary);
+            color: #000;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 170, 255, 0.4);
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
         }
 
-        .btn-mac {
-            background: linear-gradient(135deg, var(--blue) 0%, var(--deep-blue) 100%);
-            color: var(--gray-100);
+        .btn-primary:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--border);
         }
 
-        [data-theme="light"] .btn-mac {
-            color: #FFFFFF;
+        .btn-secondary {
+            background: var(--secondary);
+            color: #000;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
         }
 
-        .btn-mac:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.4);
+        .btn-secondary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
         }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--border);
+        }
+
+        /* Theme Toggle - Brutalist Style */
+        .theme-toggle {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 4px 4px 0 var(--border);
+        }
+
+        .theme-toggle:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--border);
+        }
+
+        .theme-toggle:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--border);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--yellow);
+        }
+
+        .sun-icon { display: block; }
+        .moon-icon { display: none; }
+
+        [data-theme="light"] .sun-icon { display: none; }
+        [data-theme="light"] .moon-icon { display: block; }
+        [data-theme="light"] .theme-toggle svg { color: #6B5B95; }
 
         /* Hero Section */
         .hero {
@@ -373,7 +266,7 @@
         }
 
         .hero-content {
-            max-width: 1700px;
+            max-width: 1400px;
             width: 100%;
         }
 
@@ -381,23 +274,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 3rem;
+            margin-bottom: 4rem;
         }
 
         .hero-device {
             flex: 0 0 auto;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
         }
 
         .hero-device:hover {
-            transform: translateY(-10px);
+            transform: rotate(-2deg) scale(1.02);
         }
 
         .hero-device img {
             width: 180px;
             height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(8px 8px 0 var(--border));
         }
 
         .hero-device.iphone img {
@@ -405,7 +298,11 @@
         }
 
         .hero-device.mac img {
-            width: 700px;
+            width: 600px;
+        }
+
+        .hero-device.mac:hover {
+            transform: rotate(1deg) scale(1.02);
         }
 
         .hero-center {
@@ -414,59 +311,75 @@
             max-width: 600px;
         }
 
+        /* Badge */
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: var(--gradient-soft);
-            border: 1px solid rgba(0, 170, 255, 0.2);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--green);
+            background: var(--yellow);
+            border: var(--border-width) solid var(--border);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #000;
             margin-bottom: 1.5rem;
+            transform: rotate(-1deg);
+            box-shadow: 4px 4px 0 var(--border);
         }
 
         .badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border: 2px solid #000;
+            animation: blink 1s infinite;
         }
 
-        @keyframes pulse {
+        @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.3; }
         }
 
         h1 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
-        h1 span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        h1 .highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 .highlight::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            right: -4px;
+            height: 35%;
+            background: var(--primary);
+            z-index: -1;
+            transform: skewX(-3deg);
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-400);
-            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
             line-height: 1.7;
         }
 
         .hero-buttons {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
@@ -477,105 +390,79 @@
             flex-wrap: wrap;
         }
 
-        .system-req {
-            font-size: 0.75rem;
-            color: var(--gray-600);
-            margin-top: 0.25rem;
-        }
-
         .download-btn-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        .system-req {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Privacy Notice - Brutalist */
         .privacy-notice {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding: 0.75rem 1.25rem;
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid rgba(0, 255, 136, 0.15);
-            border-radius: 12px;
-            max-width: 500px;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border);
+            max-width: 550px;
+            transform: rotate(0.5deg);
+            box-shadow: 4px 4px 0 var(--primary);
         }
 
         .privacy-notice svg {
             flex-shrink: 0;
-            color: var(--green);
+            color: var(--primary);
         }
 
         .privacy-notice p {
             font-size: 0.8rem;
-            color: var(--gray-400);
+            color: var(--text-muted);
             line-height: 1.5;
             text-align: left;
         }
 
         .privacy-notice a {
-            color: var(--green);
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
         }
 
         .privacy-notice a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 900px) {
-            .hero-top {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .hero-device {
-                order: 2;
-            }
-
-            .hero-device.iphone {
-                order: 1;
-            }
-
-            .hero-device.mac {
-                order: 3;
-            }
-
-            .hero-center {
-                order: 2;
-                max-width: 100%;
-            }
-
-            .hero-device img,
-            .hero-device.iphone img,
-            .hero-device.mac img {
-                width: 350px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-
-        .hero-image {
-            margin-top: 4rem;
-            position: relative;
+            background: var(--primary);
+            color: #000;
         }
 
         /* Screenshot Carousel */
+        .hero-image {
+            margin-top: 4rem;
+        }
+
         .screenshot-carousel {
             position: relative;
             max-width: 100%;
             margin: 0 auto;
             overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            border-top: var(--border-width) solid var(--border);
+            border-bottom: var(--border-width) solid var(--border);
+            padding: 2rem 0;
+            background: var(--bg-elevated);
         }
 
         .screenshot-track {
             display: flex;
-            gap: 5rem;
-            animation: scroll-carousel 40s linear infinite;
+            gap: 3rem;
+            animation: scroll-carousel 35s linear infinite;
             width: max-content;
             align-items: center;
         }
@@ -590,88 +477,80 @@
         }
 
         .devices-mockup {
-            height: 330px;
+            height: 320px;
             width: auto;
-            border-radius: 16px;
-            border: none;
-            outline: none;
+            border: var(--border-width) solid var(--border);
             flex-shrink: 0;
-            transition: transform 0.4s ease;
-            object-fit: contain;
-            mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+            transition: transform 0.3s ease;
+            box-shadow: 6px 6px 0 var(--border);
         }
 
         .devices-mockup:hover {
-            transform: scale(1.03);
+            transform: rotate(-1deg) scale(1.02);
         }
 
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
-
-        /* Stats Bar */
+        /* Stats Bar - Brutalist */
         .stats-bar {
             position: relative;
             z-index: 1;
-            padding: 3rem 2rem;
-            background: rgba(10, 10, 15, 0.8);
-            border-top: 1px solid rgba(0, 170, 255, 0.1);
-            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
-            transition: background 0.3s ease;
+            padding: 0;
+            background: var(--primary);
+            border-top: var(--border-width) solid var(--border);
+            border-bottom: var(--border-width) solid var(--border);
         }
 
         .stats-grid {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
             text-align: center;
+            border-right: var(--border-width) solid var(--border);
+            background: var(--primary);
+            transition: background 0.2s;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-item:hover {
+            background: var(--yellow);
         }
 
         .stat-item h3 {
+            font-family: 'Space Mono', monospace;
             font-size: 2rem;
             font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #000;
             margin-bottom: 0.25rem;
         }
 
         .stat-item p {
-            color: var(--gray-400);
-            font-size: 0.9rem;
+            font-family: 'Space Mono', monospace;
+            color: #000;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
         }
 
         @media (max-width: 768px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-item {
+                border-bottom: var(--border-width) solid var(--border);
+            }
+            .stat-item:nth-child(2) {
+                border-right: none;
+            }
+            .stat-item:nth-last-child(-n+2) {
+                border-bottom: none;
             }
         }
 
@@ -679,27 +558,42 @@
         section {
             position: relative;
             z-index: 1;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
         }
 
         .section-header {
             text-align: center;
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 4rem;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: var(--secondary);
+            z-index: -1;
+            transform: skewX(-5deg);
         }
 
         .section-header p {
-            color: var(--gray-400);
+            color: var(--text-muted);
             font-size: 1.1rem;
         }
 
-        /* Features Section */
+        /* Features Grid - Brutalist Cards */
         .features-grid {
             max-width: 1000px;
             margin: 0 auto;
@@ -715,58 +609,65 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border);
+            padding: 1.75rem;
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
             align-items: flex-start;
-            transition: all 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
         }
 
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(0, 170, 255, 0.2);
-            transform: translateY(-2px);
+            transform: translate(-4px, -4px);
+            box-shadow: calc(var(--shadow-offset) + 4px) calc(var(--shadow-offset) + 4px) 0 var(--border);
         }
 
-        [data-theme="light"] .feature-card:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
+        .feature-card:nth-child(1) { transform: rotate(-0.5deg); }
+        .feature-card:nth-child(2) { transform: rotate(0.5deg); }
+        .feature-card:nth-child(3) { transform: rotate(0.3deg); }
+        .feature-card:nth-child(4) { transform: rotate(-0.3deg); }
+
+        .feature-card:nth-child(1):hover { transform: rotate(-0.5deg) translate(-4px, -4px); }
+        .feature-card:nth-child(2):hover { transform: rotate(0.5deg) translate(-4px, -4px); }
+        .feature-card:nth-child(3):hover { transform: rotate(0.3deg) translate(-4px, -4px); }
+        .feature-card:nth-child(4):hover { transform: rotate(-0.3deg) translate(-4px, -4px); }
 
         .feature-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            color: var(--green);
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border: var(--border-width) solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .feature-icon svg {
             width: 24px;
             height: 24px;
+            color: #000;
         }
 
         .feature-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
         .feature-card p {
-            color: var(--gray-400);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Setup Section */
+        /* Setup Section - Brutalist */
         .setup {
-            background: rgba(10, 10, 15, 0.6);
-            transition: background 0.3s ease;
+            background: var(--bg-elevated);
+            border-top: var(--border-width) solid var(--border);
+            border-bottom: var(--border-width) solid var(--border);
         }
 
         .setup-steps {
@@ -781,49 +682,60 @@
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: background 0.3s ease, border-color 0.3s ease;
+            background: var(--bg);
+            border: var(--border-width) solid var(--border);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .setup-step:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--border);
         }
 
         .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border: var(--border-width) solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Space Mono', monospace;
             font-weight: 700;
-            color: var(--dark);
+            font-size: 1.25rem;
+            color: #000;
             flex-shrink: 0;
         }
 
+        .step-content {
+            flex: 1;
+        }
+
         .step-content h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .step-content p {
-            color: var(--gray-400);
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
         .step-content code {
-            background: rgba(0, 170, 255, 0.1);
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
+            background: var(--primary);
+            padding: 0.2rem 0.5rem;
+            font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
-            color: var(--blue);
+            color: #000;
+            border: 2px solid var(--border);
         }
 
         .permission-list {
-            margin-top: 0.75rem;
+            margin-top: 1rem;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -832,22 +744,25 @@
         .permission-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             font-size: 0.9rem;
-            color: var(--gray-400);
+            color: var(--text-muted);
+            padding: 0.5rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
         }
 
         .permission-item::before {
             content: "→";
-            color: var(--green);
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .setup-image {
             margin-top: 1rem;
             max-width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: var(--border-width) solid var(--border);
+            box-shadow: 6px 6px 0 var(--border);
         }
 
         .setup-images-grid {
@@ -859,57 +774,71 @@
 
         .setup-image-small {
             width: 100%;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease;
+            border: var(--border-width) solid var(--border);
+            box-shadow: 4px 4px 0 var(--border);
+            transition: transform 0.2s;
         }
 
         .setup-image-small:hover {
-            transform: scale(1.02);
+            transform: rotate(-1deg) scale(1.02);
         }
 
-        /* Pricing */
+        /* Pricing - Brutalist */
         .pricing {
             text-align: center;
         }
 
         .pricing-card {
             position: relative;
-            max-width: 400px;
+            max-width: 420px;
             margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 170, 255, 0.2);
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: background 0.3s ease;
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border);
+            padding: 3rem;
+            box-shadow: 10px 10px 0 var(--border);
+            transform: rotate(-1deg);
         }
 
-        .currency-flag {
+        .pricing-card::before {
+            content: 'BEST VALUE';
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 3rem;
-            opacity: 0.8;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: #fff;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border: var(--border-width) solid var(--border);
+            transform: rotate(3deg);
+            letter-spacing: 0.05em;
         }
 
         .price-tag {
-            font-size: 4rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Space Mono', monospace;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
         }
 
         .price-tag sup {
-            font-size: 1.5rem;
-            vertical-align: super;
+            font-size: 2rem;
+            vertical-align: top;
+        }
+
+        .price-tag .currency {
+            font-size: 2rem;
         }
 
         .price-period {
-            color: var(--gray-400);
+            font-family: 'Space Mono', monospace;
+            color: var(--text-muted);
             margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
         }
 
         .pricing-features {
@@ -922,27 +851,39 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--gray-100);
+            padding: 0.875rem;
+            border-bottom: 2px solid var(--border);
+            color: var(--text);
+            font-weight: 500;
         }
 
-        [data-theme="light"] .pricing-features li {
-            border-bottom-color: rgba(0, 0, 0, 0.05);
+        .pricing-features li:last-child {
+            border-bottom: none;
         }
 
         .pricing-features li svg {
-            color: var(--green);
+            color: var(--primary);
             flex-shrink: 0;
+            background: var(--primary);
+            padding: 4px;
+            border: 2px solid var(--border);
+        }
+
+        .pricing-features li svg polyline {
+            stroke: #000;
         }
 
         .trial-note {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--green);
+            margin-top: 1.25rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* Contact */
+        /* Contact - Brutalist */
         .contact {
             text-align: center;
         }
@@ -950,11 +891,11 @@
         .contact-card {
             max-width: 500px;
             margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 170, 255, 0.2);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: background 0.3s ease;
+            background: var(--bg-elevated);
+            border: var(--border-width) solid var(--border);
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0 var(--border);
+            transform: rotate(0.5deg);
         }
 
         .contact-form {
@@ -969,10 +910,13 @@
 
         .form-group label {
             display: block;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--gray-100);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text);
         }
 
         .form-group input,
@@ -980,41 +924,40 @@
         .form-group textarea {
             width: 100%;
             padding: 0.875rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: var(--gray-100);
-            font-family: inherit;
+            background: var(--bg);
+            border: var(--border-width) solid var(--border);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1rem;
-            transition: all 0.2s ease;
+            transition: box-shadow 0.2s, transform 0.2s;
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: var(--gray-600);
+            color: var(--text-muted);
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--blue);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        [data-theme="light"] .form-group input:focus,
-        [data-theme="light"] .form-group select:focus,
-        [data-theme="light"] .form-group textarea:focus {
-            background: rgba(0, 0, 0, 0.08);
+            box-shadow: 4px 4px 0 var(--primary);
+            transform: translate(-2px, -2px);
         }
 
         .form-group select {
             cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 18px;
+            padding-right: 40px;
         }
 
         .form-group select option {
-            background: var(--darker);
-            color: var(--gray-100);
+            background: var(--bg);
+            color: var(--text);
         }
 
         .form-group textarea {
@@ -1028,28 +971,61 @@
             margin-top: 0.5rem;
         }
 
-        /* Footer */
+        /* Footer - Brutalist */
         footer {
             position: relative;
             z-index: 1;
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--gray-600);
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
+            border-top: var(--border-width) solid var(--border);
+            background: var(--bg-elevated);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         footer a {
-            color: var(--gray-400);
+            color: var(--text);
             text-decoration: none;
+            border-bottom: 2px solid var(--primary);
+            transition: background 0.2s, color 0.2s;
         }
 
         footer a:hover {
-            color: var(--gray-100);
+            background: var(--primary);
+            color: #000;
         }
 
-        /* Animations */
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
+        /* Hero Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1062,269 +1038,166 @@
         }
 
         .hero-content > * {
-            animation: fadeInUp 0.8s ease forwards;
+            animation: fadeInUp 0.7s ease forwards;
         }
 
         .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
         .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
-        .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
-        .hero-image { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+        .hero-image { animation: fadeInUp 0.7s ease 0.3s forwards; opacity: 0; }
 
-        /* ========== MOBILE PORTRAIT IMPROVEMENTS ========== */
+        /* ========== MOBILE STYLES ========== */
+        @media (max-width: 900px) {
+            .hero-top {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-device { order: 2; }
+            .hero-device.iphone { order: 1; }
+            .hero-device.mac { order: 3; }
+            .hero-center { order: 2; max-width: 100%; }
+
+            .hero-device img,
+            .hero-device.iphone img,
+            .hero-device.mac img {
+                width: 320px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
         @media (max-width: 600px) {
-            /* Navigation */
-            .setup-step img {
-                max-width: 100% !important;
-                width: 100% !important;
-                height: auto;
-            }
             nav {
-                padding: 1rem 1rem;
+                padding: 1rem;
             }
-            
-            .nav-inner {
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-            
+
             .nav-links {
                 display: none;
             }
-            
-            .nav-inner .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
 
             .theme-toggle {
-                width: 40px;
-                height: 40px;
-                margin-left: 0;
+                width: 42px;
+                height: 42px;
             }
 
-            .theme-toggle svg {
-                width: 18px;
-                height: 18px;
-            }
-            
-            /* Hero Section */
             .hero {
                 padding: 6rem 1rem 2rem;
                 min-height: auto;
             }
-            
-            .hero-top {
-                gap: 1.5rem;
-            }
-            
+
             .hero-device img,
             .hero-device.iphone img {
                 width: 160px !important;
             }
-            
+
             .hero-device.mac img {
                 width: 280px !important;
             }
-            
+
             h1 {
                 font-size: 1.75rem;
-                line-height: 1.2;
             }
-            
-            .hero-subtitle {
-                font-size: 0.95rem;
-                padding: 0 0.5rem;
-            }
-            
+
             .hero-buttons-row {
                 flex-direction: column;
                 width: 100%;
             }
-            
+
             .download-btn-wrapper {
                 width: 100%;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
-                padding: 0.875rem 1.25rem;
             }
-            
-            .system-req {
-                font-size: 0.7rem;
-            }
-            
-            .privacy-notice {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-            }
-            
-            .privacy-notice p {
-                text-align: center;
-            }
-            
-            /* Screenshot Carousel - smaller on mobile */
+
             .devices-mockup {
                 height: 200px;
             }
-            
+
             .screenshot-track {
-                gap: 2rem;
+                gap: 1.5rem;
             }
-            
-            /* Stats Bar */
-            .stats-bar {
-                padding: 2rem 1rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-            
-            .stat-item h3 {
-                font-size: 1.4rem;
-            }
-            
-            .stat-item p {
-                font-size: 0.8rem;
-            }
-            
-            /* Sections */
+
             section {
-                padding: 3rem 1rem;
+                padding: 4rem 1rem;
             }
-            
+
             .section-header h2 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
-            
-            .section-header p {
-                font-size: 0.95rem;
-            }
-            
-            /* Feature Cards */
-            .feature-card {
-                padding: 1.25rem;
-            }
-            
-            .feature-card h3 {
-                font-size: 1rem;
-            }
-            
-            .feature-card p {
-                font-size: 0.85rem;
-            }
-            
-            /* Setup Steps */
+
             .setup-step {
                 flex-direction: column;
                 gap: 1rem;
-                padding: 1.25rem;
             }
-            
-            .step-number {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
+
+            .setup-step img {
+                max-width: 100% !important;
+                width: 100% !important;
             }
-            
-            .step-content h3 {
-                font-size: 1rem;
-            }
-            
-            .step-content p {
-                font-size: 0.9rem;
-            }
-            
+
             .setup-images-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .setup-image {
-                max-width: 100% !important;
-            }
-            
-            /* Pricing */
+
             .pricing-card {
-                padding: 1.75rem;
+                padding: 2rem;
                 margin: 0 0.5rem;
+                transform: rotate(0);
             }
-            
+
             .price-tag {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
-            
-            .price-tag sup {
-                font-size: 1.2rem;
-            }
-            
-            /* Contact */
+
             .contact-card {
                 padding: 1.5rem;
                 margin: 0 0.5rem;
+                transform: rotate(0);
             }
-            
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 0.75rem;
-                font-size: 16px;
-            }
-            
-            /* Footer */
+
             footer {
-                padding: 1.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            
-            /* Background glows - reduce on mobile */
-            .bg-glow {
-                width: 400px;
-                height: 400px;
-                opacity: 0.25;
+                font-size: 0.75rem;
             }
         }
 
-        /* Extra small phones */
         @media (max-width: 380px) {
             h1 {
                 font-size: 1.5rem;
             }
-            
+
             .hero-device img,
             .hero-device.iphone img {
                 width: 140px !important;
             }
-            
+
             .hero-device.mac img {
                 width: 240px !important;
             }
-            
+
             .devices-mockup {
                 height: 160px;
             }
-            
+
             .price-tag {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
             }
         }
     </style>
-    
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-pattern"></div>
 
     <nav>
         <div class="nav-inner">
             <div class="logo">LilDisplay</div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#setup">How to Setup</a></li>
+                <li><a href="#setup">Setup</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1344,9 +1217,13 @@
                 <div class="hero-device iphone">
                     <img src="screenshots/iphone.png" alt="iPhone">
                 </div>
-                
+
                 <div class="hero-center">
-                    <h1>Turn Your iPhone Into a <span>Second Display</span></h1>
+                    <div class="badge">
+                        <div class="badge-dot"></div>
+                        Now Available
+                    </div>
+                    <h1>Turn Your iPhone Into a <span class="highlight">Second Display</span></h1>
                     <p class="hero-subtitle">Transform any iPhone into a wireless or USB-connected external monitor for your Mac. No expensive hardware needed.</p>
                     <div class="hero-buttons">
                         <div class="hero-buttons-row">
@@ -1355,41 +1232,41 @@
                                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                                     Download for iOS
                                 </a>
-                                <span class="system-req">Requires iOS 15 or later</span>
+                                <span class="system-req">Requires iOS 15+</span>
                             </div>
                             <div class="download-btn-wrapper">
-                                <a href="LilDisplay-Mac.dmg" class="btn btn-mac" download>
+                                <a href="LilDisplay-Mac.dmg" class="btn btn-secondary" download>
                                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                                     Download for Mac
                                 </a>
-                                <span class="system-req">Requires macOS 14 Sonoma or later</span>
+                                <span class="system-req">Requires macOS 14+</span>
                             </div>
                         </div>
                         <div class="privacy-notice">
                             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <p>LilDisplay uses Apple's peer-to-peer technology to connect your devices directly via USB or local WiFi. No data leaves your network and no internet connection is required. <a href="privacy.html">Privacy Policy</a></p>
+                            <p>Direct device-to-device connection via USB or local WiFi. No data leaves your network. <a href="privacy.html">Privacy Policy</a></p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="hero-device mac">
                     <img src="screenshots/mac.png" alt="Mac">
                 </div>
             </div>
-            
+
             <div class="hero-image">
                 <div class="screenshot-carousel">
                     <div class="screenshot-track">
-                        <img src="screenshots/Image1.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image3.png" alt="LilDisplay screenshot 3" class="devices-mockup">
-                        <img src="screenshots/Image4.png" alt="LilDisplay screenshot 4" class="devices-mockup">
-                        <img src="screenshots/Image5.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image1.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image2.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image3.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image4.png" alt="LilDisplay screenshot 2" class="devices-mockup">
-                        <img src="screenshots/Image5.png" alt="LilDisplay screenshot 2" class="devices-mockup">
+                        <img src="screenshots/Image1.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image2.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image3.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image4.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image5.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image1.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image2.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image3.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image4.png" alt="LilDisplay screenshot" class="devices-mockup">
+                        <img src="screenshots/Image5.png" alt="LilDisplay screenshot" class="devices-mockup">
                     </div>
                 </div>
             </div>
@@ -1403,12 +1280,12 @@
                 <p>Latency</p>
             </div>
             <div class="stat-item">
-                <h3>USB + WiFi</h3>
-                <p>Connectivity</p>
+                <h3>USB+WiFi</h3>
+                <p>Connection</p>
             </div>
             <div class="stat-item">
                 <h3>Touch</h3>
-                <p>Input Support</p>
+                <p>Input</p>
             </div>
             <div class="stat-item">
                 <h3>$2.99</h3>
@@ -1424,28 +1301,28 @@
         </div>
         <div class="features-grid">
             <div class="feature-card fade-in stagger-1">
-                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                 <div>
                     <h3>Ultra-Low Latency</h3>
                     <p>Under 10ms latency with USB connection. Feels instant and responsive.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-2">
-                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
                 <div>
                     <h3>USB or WiFi</h3>
                     <p>Connect via USB for best performance, or go wireless with WiFi P2P.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-3">
-                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 11l3 3 7-7M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 11l3 3 7-7M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                 <div>
                     <h3>Touch & Trackpad</h3>
                     <p>Use your iPhone as a touchscreen or trackpad to control your Mac.</p>
                 </div>
             </div>
             <div class="feature-card fade-in stagger-4">
-                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
                 <div>
                     <h3>True Display</h3>
                     <p>Works as a real monitor — extend your desktop and move windows freely.</p>
@@ -1479,7 +1356,7 @@
                 <div class="step-number">3</div>
                 <div class="step-content">
                     <h3>Open the App</h3>
-                    <p>Double-click to launch. macOS will show a security prompt saying the app was downloaded from the internet — click <strong>Open</strong> to continue.</p>
+                    <p>Double-click to launch. macOS will show a security prompt — click <strong>Open</strong> to continue.</p>
                     <img src="setup/open-prompt.png" alt="Click Open to launch the app" class="setup-image" style="max-width: 450px; display: block; margin: 1rem auto;">
                 </div>
             </div>
@@ -1487,7 +1364,7 @@
                 <div class="step-number">4</div>
                 <div class="step-content">
                     <h3>Grant Permissions</h3>
-                    <p>The app will request a few permissions. Simply click <strong>Allow</strong> on each prompt:</p>
+                    <p>The app will request a few permissions. Click <strong>Allow</strong> on each prompt:</p>
                     <div class="permission-list">
                         <div class="permission-item"><strong>Screen Access</strong> — to capture your virtual display</div>
                         <div class="permission-item"><strong>Screen Recording</strong> — to record screen content</div>
@@ -1498,7 +1375,7 @@
                         <img src="setup/screen-recording.png" alt="Screen Recording permission" class="setup-image-small">
                         <img src="setup/local-network-prompt.png" alt="Local Network permission" class="setup-image-small">
                     </div>
-                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--gray-600);">Tip: If a prompt doesn't appear, enable manually in <code>System Settings → Privacy & Security</code>:</p>
+                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">Tip: If a prompt doesn't appear, enable manually in <code>System Settings → Privacy & Security</code>:</p>
                     <div class="permission-list" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
                         <div class="permission-item" style="font-size: 0.85rem;"><strong>Accessibility</strong></div>
                         <div class="permission-item" style="font-size: 0.85rem;"><strong>Screen & System Audio Recording</strong></div>
@@ -1521,7 +1398,7 @@
                         <div class="permission-item"><strong>Launch at Login</strong> — start LilDisplay automatically when your Mac boots</div>
                         <div class="permission-item"><strong>Quit</strong> — close the app</div>
                     </div>
-                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--gray-600);"><strong>Troubleshooting:</strong> If the connection gets stuck, try clicking <strong>Reconnect</strong> from the menu. If that doesn't work, <strong>Quit</strong> the app and reopen it.</p>
+                    <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Troubleshooting:</strong> If the connection gets stuck, try clicking <strong>Reconnect</strong> from the menu. If that doesn't work, <strong>Quit</strong> the app and reopen it.</p>
                 </div>
             </div>
         </div>
@@ -1533,35 +1410,35 @@
             <p>No subscriptions. Pay once, use forever.</p>
         </div>
         <div class="pricing-card scale-in">
-            <div class="price-tag"><sup>$</sup>2<sup>.99</sup></div>
+            <div class="price-tag"><span class="currency">$</span>2<sup>.99</sup></div>
             <p class="price-period">One-time purchase</p>
             <ul class="pricing-features">
                 <li>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                     USB & WiFi connectivity
                 </li>
                 <li>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                     Touch & trackpad input
                 </li>
                 <li>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                     Portrait & landscape modes
                 </li>
                 <li>
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                     All future updates
                 </li>
             </ul>
             <a href="javascript:void(0)" class="btn btn-primary" style="width: 100%; justify-content: center;">Get LilDisplay</a>
-            <p class="trial-note">Start with a 3-day free trial</p>
+            <p class="trial-note">★ Start with a 3-day free trial</p>
         </div>
     </section>
 
     <section class="contact" id="contact">
         <div class="section-header fade-in">
             <h2>Get in Touch</h2>
-            <p>Questions, feedback, or just want to say hi? We'd love to hear from you.</p>
+            <p>Questions, feedback, or just want to say hi?</p>
         </div>
         <div class="contact-card scale-in">
             <form class="contact-form" action="https://formspree.io/f/xkonoynw" method="POST">
@@ -1591,31 +1468,20 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#c1b2b4b1b1aeb3b581ada8ada5a8b2b1ada0b8efa0b1b1">Support</a></p>
+        <p>© 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="mailto:support@lildisplay.app">Support</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Theme Toggle with animation
+    <script>
+        // Theme Toggle
         function toggleTheme() {
             const html = document.documentElement;
-            const toggle = document.querySelector('.theme-toggle');
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            // Add switching animation
-            toggle.classList.add('switching');
-            
-            setTimeout(() => {
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            }, 300);
-            
-            setTimeout(() => {
-                toggle.classList.remove('switching');
-            }, 600);
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         }
 
-        // Load saved theme on page load
+        // Load saved theme
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1638,21 +1504,6 @@
 
         document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
             observer.observe(el);
-        });
-        // Smooth parallax for background glows
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const glow1 = document.querySelector('.bg-glow-1');
-                    const glow2 = document.querySelector('.bg-glow-2');
-                    if (glow1) glow1.style.transform = `translateY(${scrollY * 0.1}px)`;
-                    if (glow2) glow2.style.transform = `translateY(${scrollY * -0.05}px)`;
-                    ticking = false;
-                });
-                ticking = true;
-            }
         });
     </script>
 </body>
