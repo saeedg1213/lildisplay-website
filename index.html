@@ -7,11 +7,9 @@
 
     <!-- Favicon -->
     <link rel="icon" href="favicon/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="mask-icon" href="favicon/favicon.svg" color="#3B82F6">
 
-    <meta name="description" content="Transform any iPhone or iPad into a USB-connected external monitor for your Mac — with the touch input that macOS is missing.">
+    <meta name="description" content="Transform any iPhone or iPad into an external monitor for your Mac — over USB or WiFi, with the touch input that macOS is missing.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1189,7 +1187,6 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#setup">Setup</a></li>
-                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-right">
@@ -1215,7 +1212,7 @@
                         Touch Input for Mac
                     </div>
                     <h1>iPhone & iPad, Touchscreen Mac Display</span></h1>
-                    <p class="hero-subtitle">Transform any iPhone or iPad into a USB-connected external monitor for your Mac — with the touch input that macOS is missing.</p>
+                    <p class="hero-subtitle">Transform any iPhone or iPad into an external monitor for your Mac — over USB or WiFi, with the touch input that macOS is missing.</p>
                     <div class="hero-buttons">
                         <div class="hero-buttons-row">
                             <div class="download-btn-wrapper">
@@ -1226,7 +1223,7 @@
                                 <span class="system-req">Requires iOS 15+</span>
                             </div>
                             <div class="download-btn-wrapper">
-                                <a href="LilDisplay-Mac.dmg" class="btn btn-secondary" download>
+                                <a href="LilDisplay-macos.dmg" class="btn btn-secondary" download>
                                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                                     Download for Mac
                                 </a>
@@ -1235,7 +1232,7 @@
                         </div>
                         <div class="privacy-notice">
                             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <p>Direct device-to-device connection via USB. No data leaves your devices. <a href="privacy.html">Privacy Policy</a></p>
+                            <p>Direct device-to-device connection via USB or peer-to-peer WiFi. No data leaves your devices. <a href="privacy.html">Privacy Policy</a></p>
                         </div>
                     </div>
                 </div>
@@ -1269,7 +1266,7 @@
                 <p>Latency</p>
             </div>
             <div class="stat-item">
-                <h3>USB</h3>
+                <h3>USB + WiFi</h3>
                 <p>Connection</p>
             </div>
             <div class="stat-item">
@@ -1314,6 +1311,20 @@
                 <div>
                     <h3>True Display</h3>
                     <p>Works as a real monitor — extend your desktop and move windows freely.</p>
+                </div>
+            </div>
+            <div class="feature-card fade-in stagger-1">
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
+                <div>
+                    <h3>Wireless Mode</h3>
+                    <p>No cable? Connect over peer-to-peer WiFi using the pairing code shown in the Mac menu bar — no shared network required.</p>
+                </div>
+            </div>
+            <div class="feature-card fade-in stagger-2">
+                <div class="feature-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
+                <div>
+                    <h3>Streaming Quality Presets</h3>
+                    <p>Pick your balance: Auto, Low (fastest), Medium, High, or Ultra (best image) — right from the menu bar.</p>
                 </div>
             </div>
         </div>
@@ -1376,13 +1387,19 @@
                 <div class="step-number">5</div>
                 <div class="step-content">
                     <h3>Connect & Enjoy</h3>
-                    <p>Open LilDisplay on your iPhone or iPad, connect via USB, and tap <strong>Connect</strong>. Your new display is ready!</p>
-                    <p style="margin-top: 1rem;">Once launched, the Mac app moves to your <strong>menu bar</strong> at the top of the screen:</p>
-                    <img src="setup/menu-bar.png" alt="LilDisplay menu bar" class="setup-image" style="max-width: 300px; display: block; margin: 1rem auto;">
+                    <p>Open LilDisplay on your iPhone or iPad and connect via <strong>USB</strong> (lowest latency) or <strong>WiFi</strong>. For WiFi, enter the pairing code shown in the Mac menu bar — it's peer-to-peer, so the devices don't even need to be on the same network. Your new display is ready!</p>
+                    <p style="margin-top: 1rem;">Once launched, the Mac app lives in your <strong>menu bar</strong> at the top of the screen, showing the live pairing code and the app's CPU and memory usage:</p>
+                    <img src="setup/menu-overview.png" alt="LilDisplay menu bar with pairing code and options" class="setup-image" style="max-width: 450px; display: block; margin: 1rem auto;">
                     <div class="permission-list" style="margin-top: 1rem;">
-                        <div class="permission-item"><strong>Reconnect</strong> — manually retry the connection</div>
+                        <div class="permission-item"><strong>Streaming Quality</strong> — choose Auto (recommended), Low for the fastest response, Medium, High, or Ultra for the best image</div>
+                        <div class="permission-item"><strong>Reconnect</strong> (⌘R) — manually retry the connection</div>
+                        <div class="permission-item"><strong>Advanced → Keep Awake When Lid Is Closed</strong> — keep streaming even with your MacBook's lid shut</div>
                         <div class="permission-item"><strong>Launch at Login</strong> — start LilDisplay automatically when your Mac boots</div>
-                        <div class="permission-item"><strong>Quit</strong> — close the app</div>
+                        <div class="permission-item"><strong>Quit</strong> (⌘Q) — close the app</div>
+                    </div>
+                    <div class="setup-images-grid">
+                        <img src="setup/menu-streaming-quality.png" alt="Streaming Quality options: Auto, Low, Medium, High, Ultra" class="setup-image-small">
+                        <img src="setup/menu-advanced.png" alt="Advanced menu: Keep Awake When Lid Is Closed" class="setup-image-small">
                     </div>
                     <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);"><strong>Troubleshooting:</strong> If the connection gets stuck, try clicking <strong>Reconnect</strong> from the menu. If that doesn't work, <strong>Quit</strong> the app and reopen it.</p>
                 </div>
