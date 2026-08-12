@@ -9,7 +9,7 @@
     <link rel="icon" href="favicon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 
-    <meta name="description" content="Transform any iPhone or iPad into an external monitor for your Mac — over USB or WiFi, with the touch input that macOS is missing.">
+    <meta name="description" content="Transform any iPhone or iPad into an external monitor for your Mac — over USB or WiFi, with the touch input that macOS is missing. Try it free, then unlock for a one-time $2.99. No subscription.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -111,6 +111,7 @@
             left: 0;
             right: 0;
             height: 8px;
+            background: var(--primary);
             z-index: -1;
         }
 
@@ -365,6 +366,7 @@
             left: -4px;
             right: -4px;
             height: 35%;
+            background: var(--primary);
             z-index: -1;
             transform: skewX(-3deg);
         }
@@ -513,6 +515,11 @@
             background: var(--yellow);
         }
 
+        .stat-item:hover h3,
+        .stat-item:hover p {
+            color: #000;
+        }
+
         .stat-item h3 {
             font-family: 'Space Mono', monospace;
             font-size: 2rem;
@@ -574,6 +581,7 @@
             left: 0;
             right: 0;
             height: 12px;
+            background: var(--yellow);
             z-index: -1;
             transform: skewX(-5deg);
         }
@@ -861,6 +869,21 @@
 
         .pricing-features li svg polyline {
             stroke: #000;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .price-note {
+            margin-top: 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .trial-note {
@@ -1187,6 +1210,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#setup">Setup</a></li>
+                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-right">
@@ -1211,7 +1235,7 @@
                         <div class="badge-dot"></div>
                         Touch Input for Mac
                     </div>
-                    <h1>iPhone & iPad, Touchscreen Mac Display</span></h1>
+                    <h1>iPhone &amp; iPad, <span class="highlight">Touchscreen</span> Mac Display</h1>
                     <p class="hero-subtitle">Transform any iPhone or iPad into an external monitor for your Mac — over USB or WiFi, with the touch input that macOS is missing.</p>
                     <div class="hero-buttons">
                         <div class="hero-buttons-row">
@@ -1220,14 +1244,14 @@
                                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                                     Download for iOS
                                 </a>
-                                <span class="system-req">Requires iOS 15+</span>
+                                <span class="system-req">iOS 15+ · 3 free sessions, then $2.99</span>
                             </div>
                             <div class="download-btn-wrapper">
                                 <a href="LilDisplay-macos.dmg" class="btn btn-secondary" download>
                                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                                     Download for Mac
                                 </a>
-                                <span class="system-req">Requires macOS 14+</span>
+                                <span class="system-req">macOS 14+ · Free companion app</span>
                             </div>
                         </div>
                         <div class="privacy-notice">
@@ -1272,6 +1296,10 @@
             <div class="stat-item">
                 <h3>Touch</h3>
                 <p>For Mac</p>
+            </div>
+            <div class="stat-item">
+                <h3>$2.99</h3>
+                <p>One-Time</p>
             </div>
         </div>
     </section>
@@ -1336,7 +1364,7 @@
                 <div class="step-number">1</div>
                 <div class="step-content">
                     <h3>Download Both Apps</h3>
-                    <p>Get LilDisplay from the App Store on your iPhone or iPad, and download the free Mac companion app from this website.</p>
+                    <p>Get LilDisplay from the App Store on your iPhone or iPad — it's a free download with 3 free sessions, then a one-time unlock. The Mac companion app is free and comes from this website.</p>
                 </div>
             </div>
             <div class="setup-step fade-in stagger-2">
@@ -1403,6 +1431,50 @@
             </div>
         </div>
     </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-header fade-in">
+            <h2>Pricing</h2>
+            <p>Pay once. Own it forever. No subscription, ever.</p>
+        </div>
+        <div class="pricing-card scale-in">
+            <div class="price-tag"><span class="currency">$</span>2<sup>99</sup></div>
+            <div class="price-period">One-Time Purchase</div>
+            <ul class="pricing-features">
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Unlimited connections
+                </li>
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    USB &amp; peer-to-peer WiFi
+                </li>
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Touch input for macOS
+                </li>
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    iPhone and iPad, one purchase
+                </li>
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    Free Mac companion app
+                </li>
+                <li>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                    All future updates included
+                </li>
+            </ul>
+            <a href="https://apps.apple.com/ca/app/lildisplay/id6757023864" class="btn btn-primary pricing-cta">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download &amp; Try Free
+            </a>
+            <p class="trial-note">3 free sessions — no card needed</p>
+            <p class="price-note">Price shown in USD. Your local price is set by the App Store and shown before you buy. Already downloaded LilDisplay before it went paid? You keep full access for free.</p>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="section-header fade-in">
             <h2>Get in Touch</h2>
@@ -1436,7 +1508,7 @@
     </section>
 
     <footer>
-        <p>© 2025 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#60131510100f1214200c090c040913100c01194e011010">Support</a></p>
+        <p>© 2026 LilDisplay. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="/cdn-cgi/l/email-protection#60131510100f1214200c090c040913100c01194e011010">Support</a></p>
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
