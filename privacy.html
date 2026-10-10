@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - LilDisplay</title>
+    <script>
+        // Same theme as the main page: light by default, or the visitor's saved choice.
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -190,6 +194,11 @@
         a:hover {
             background: var(--primary);
             color: #000;
+        }
+
+        /* Neon green text is unreadable on cream — use the main page's link style */
+        [data-theme="light"] a {
+            color: var(--text);
         }
 
         /* Footer */
